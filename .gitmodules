@@ -1,0 +1,3 @@
+[submodule "lecture-notes/commons"]
+	path = lecture-notes/commons
+	url = git@github.com:SPbSU-StatMod-Masters17/commons.git

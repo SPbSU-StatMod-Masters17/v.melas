@@ -1,0 +1,26 @@
+%!TEX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+\include{commons/packages/abstract}        % Подключаемые пакеты
+\include{commons/styles/abstract}          % Пользовательские стили
+\include{commons/commands/commands}  
+
+\newcommand{\Header}{
+  \pagestyle{empty}
+  \begin{center}
+    {\Large\bf 
+    Конспек по курсу В. Меласа «Дополнительные главы оптимального планирования эксперимента» 
+     }\\
+    \vspace{0.7em}
+    {Собрано {\today} в {\currenttime}}
+  \end{center}
+
+  \vspace{1em}
+  \tableofcontents
+  \pagebreak
+}
+
+
+\begin{document}
+     \Header{}
+\end{document}
