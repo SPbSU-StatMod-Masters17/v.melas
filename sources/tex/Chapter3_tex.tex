@@ -1,0 +1,932 @@
+
+\newpage
+
+\chapter{\bf Linear fractional model}
+
+We pay attention to the linear fractional functions since they can be used
+for approximating an arbitrary continuous function. The linear-fractional
+approximation is usually better than a polynomial one since it considers
+sufficiently less set of parameters.
+
+The present chapter is intended to construct and analyze locally $D$-optimal
+designs for the linear fractional model. Section 3.1 considers some ways to
+define it. Section 3.2 is to demonstrate that a locally $D$-optimal design
+is unique and the number of points it consists of is equal to the number of
+parameters to be estimated. The next section presents an algebraic method
+of finding a locally $D$-optimal design. That method is developed on the
+base of a Stilties's idea and may be used for finding $D$-optimal designs
+in explicit form at some particular set of parameters, that makes the
+functional approach applicable. The last section includes power expansions
+for the optimal design-functions of the linear fractional model with
+numerator represented with a second degree polynomial and denominator --- with
+that of the third degree. The optimal designs for some less complex models
+in explicit form can be found in section 3.3.
+
+The results of this chapter are previously unpublished.
+
+
+\section{Defining the model}
+
+Let $\G_1=(\indr{\g}{m-k})^T\in\IR^{m-k},\>
+ \G_2=(\indlr{\g}{m-k+1}{m})^T\in\IR^{k},\>$
+$P(x)=P(x,\G_1)$ ¨ $Q(x)=Q(x,\G_2)$ be polynomials of one argument
+$$
+ P(x)=\suml_{j=1}^{m-k} \g_jx^{j-1},\>
+ Q(x)=\suml_{j=1}^{k} \g_{j+m-k}x^{j-1}+x^k.
+$$
+Let $\G=(\indr{\g}{m})^T$ and
+$\Omega$ be some given bounded subset of $\IR^m$, such that
+the fraction
+\beq
+ \eta_1(x,\G)=P(x,\G_1)/Q(x,\G_2)
+ \label{eq:eta1}
+\eeq
+is noncancellable for $\G\in\Omega.$
+Let ${\mbox{\eufrac X}}\subset\IR^1,\>{\mbox{\eufrac X}}$ be a compact
+that does not include the zeros of polynomial $Q(x,\G_2)$ at $\G\in\Omega.$
+
+Function $\eta_1(x,\G),$ defined by formula~(\ref{eq:eta1}),
+where $\G\in\Omega,x\in{\mbox{\eufrac X}},\>$
+$\indr{\g}{m}$ are parameters to be estimated, is called the linear
+fractional regression function.
+
+It will be proved in the following section that the locally $D$-optimal
+design for this function and model~(1.1)--(1.2) exists, it is unique
+and concentrated in $m$ points with equal weights. Some more detailed
+results are to be obtained under the following additional constraints:
+
+\noindent
+(a)~all the zeros of polynomial $Q(x)=Q(x,\G_2)$ are negative and do not
+coincide for $\G\in\Omega$
+$$
+ Q(x)=\prodl_{j=1}^k (x+\gamma_j),\>
+ \gamma_1>\ldots>\gamma_k>0
+$$
+and ${\mbox{\eufrac X}}=[0,d],\>d>0;$
+
+\noindent
+(b)~$m-k>k;$
+
+\noindent
+(c)~$m=2k.$
+
+It is easy to verify that if condition~(a) is satisfied, the right-hand
+side of equality~(\ref{eq:eta1}) can be represented in the form
+\beq
+ \eta_2(x,\tilde{\G})=\suml_{j=1}^l \tilde\theta_jx^{j-1}+
+  \suml_{j=1}^k \frac{\tilde\theta_{j+l}}{x+\tilde\theta_{j+l+k}},
+ \label{eq:eta2}
+\eeq
+where $l=m-2k$ for $m>2k$ and $l=0$ for $m\le 2k$,
+$\tilde\theta_{j+l+k}=\gamma_j$, $j=1,\ldots,k.$
+Since the fraction in the right-hand side of~(\ref{eq:eta1})
+is assumed to be noncancellable, it is evident that
+$\tilde\theta_{j+l}\neq 0$, $j=1,\ldots,k.$ The fact that there exist
+$m-2k$ linear connections between $\tilde\theta_{j+l}$ is clear as well.
+If $m\ge 2k$, regression functions~(\ref{eq:eta1}) and~(\ref{eq:eta2})
+are equivalent in the following sense:
+\bl
+ \label{th:eta1=eta2}
+ Let condition~(a) be satisfied and $m\ge 2k$.
+ Then any locally $D$-optimal design for model~(1.1)--(1.2)
+ with regression function of form~(\ref{eq:eta1}) is a locally
+ $D$-optimal design for this model with regression function~(\ref{eq:eta2}),
+ where $\tilde{\G}$ is such that $\eta_1(x,\G)=\eta_2(x,\tilde{\G})$
+ and vice versa.
+\el
+This lemma is to be proved in the following section.
+
+
+\section{The number of points in a locally $D$-optimal design}
+
+Rewrite function~(\ref{eq:eta2}) omitting tilde over $\g:$
+\beq
+ \eta(x,\G)=\suml_{j=1}^l \g_jx^{j-1}+
+  \suml_{j=1}^k \frac{\g_{j+l}}{x+\g_{j+l+k}}.
+ \label{eq:eta}
+\eeq
+Assume that ${\mbox{\eufrac X}}=[0,d],$ where $d$ is some positive number,
+$\G\in\tOm,\tOm=
+\{\G:\>\eta(x,\G)=\eta_1(x,\ovl{\G})\>for\>some\>\ovl{\G}\in\Omega\}.$
+Note that the information matrix for model~(1.1)--(1.2) with regression
+function of form~(\ref{eq:eta}) coincides with that for linear in parameters
+regression function
+$$
+ \beta^T f(x),
+$$
+where $\beta^T\!=\!(\indr{\beta}{m})$ is the vector of parameters to be estimated,
+$f(x)\,=\,f(x,\G)\,=\,(f_1(x,\G)\,,\ldots\,,\,f_m(x,\G))^T$, $\G$ is fixed and
+\bea
+ f_1(x)&\equiv& 1,\ldots,f_l(x)=x^{l-1},\nonumber\\
+ f_{l+1}(x)&=&1/(x+\g_{l+k+1}),\ldots,f_{l+k}(x)=1/(x+\g_{l+2k}),\\
+ f_{l+k+1}(x)&=&-\g_{l+1}/(x+\g_{l+k+1})^2,
+ \label{eq:f_i=}
+  \ldots,f_m(x)=\nonumber\\
+&=&f_{l+2k}(x)=-\g_{l+k}/(x+\g_{l+2k})^2,\quad i=1,\ldots,k.\nonumber
+\eea
+Note that for $\G\in\tOm$ relation $\g_{j+l}\neq 0$, $j=1,\ldots,k$ is valid.
+$\g_{1+l+k}>\ldots>\g_{k+l+k}>0$ by assumption~(a).
+Note that functions (3.4) are linearly independent.
+Moreover, the following result is valid.
+Let
+\beq
+ \xi=\{\indr{x}{m},\indr{\mu}{m}\}
+ \label{eq:xi=}
+\eeq
+be an experimental design,
+$x_1<\ldots<x_m,\>\mu_j>0$, $j=1,\ldots,m.$
+
+
+\bt
+ \label{th:detM=}
+ The determinant of the information matrix of design $\xi$
+ defined by formula~(\ref{eq:xi=}) for regression functions~(\ref{eq:eta1})
+ and~(\ref{eq:eta}) has the form
+ \beq
+ \det M(\xi,\G)=\prodl_{i=1}^m \mu_i
+  \left(C(\G)\prodl_{1\le i<j\le  m}(x_j-x_i)/\prodl_{i=1}^mQ^2(x_i)\right)^2,
+ \label{eq:detM=}
+ \eeq
+ where $C(\G)$ does not depend on $\xi,$ moreover
+ \bea
+ Q(x)&=&\prodl_{j=1}^k(x+\g_{j+l+k}),\nonumber\\
+ C(\G)&=&const \prodl_{j=1}^k \g_{j+l}
+       \prodl_{1\le i<j\le  m}(\g_{j+l+k}-\g_{i+l+k})^4.
+ \label{eq:C(G)=}
+ \eea
+ for regression function~(\ref{eq:eta}).
+\et
+\bproof
+Let regression function be of form~(\ref{eq:eta}).
+Consider the determinant of matrix
+$$
+ F=\left( f_j(x_i) \right)_{i,j=1}^m.
+$$
+Multiply the elements of the $i$th line of matrix $F$ by $Q^2(x_i)$,
+$i=1\ldots m$. So, we have polynomials of degree $\le m-1$ with respect to $x_i$ in
+the $i$th line of the new matrix. It is easy to verify that its determinant
+can be led to the Vandermond form by linear transformations of the columns.
+Since
+$$
+ \det M(\xi,\G)=\mu_1\cdots\mu_m \det\!^2 F,
+$$
+formula~(\ref{eq:detM=}) is valid.
+Formula~(\ref{eq:C(G)=}) is implied by that $\det F=0$
+for $\g_{i+l+k}=\g_{j+l+k},i\neq j.$
+Formula~(\ref{eq:detM=}) for regression function~(\ref{eq:eta1})
+can be derived in a similar way.
+\etproof
+
+
+The following statement is valid for regression functions~(\ref{eq:eta1})
+and~(\ref{eq:eta}) at ${\mbox{\eufrac X}}=[0,d]$.
+\bt
+ \label{th:exist&!}
+ If condition~(a) and one of~(b),(c) are satisfied, a locally
+ $D$-optimal design exists, it is unique and concentrated in
+ $m$ points with equal weights, and one of these points is $0.$
+ Moreover, if $m>2k,$ $d$ is also one of the points.
+\et
+\bproof
+Existing of a locally $D$-optimal design follows from that
+functions~(\ref{eq:eta1}) and~(\ref{eq:eta}) are continuously differentiable
+and interval {\eufrac X} is compact.
+Let us prove other statements for regression function~(\ref{eq:eta}).
+
+Let $\xi^*=\{\indr{x^*}{n},\indr{\mu^*}{n}\}$ be a locally $D$-optimal design.
+Without loss of generality, assume that
+$$
+ 0\le x^*_1<x^*_2<\ldots <x^*_n\le d.
+$$
+Note that $n\ge m,$ since otherwise $\det M(\xi^*,\G)=0.$
+Set
+$$
+ g(x)=f^T(x)M^{-1}(\xi^*,\G)f(x),
+$$
+where $f(x)=f(x,\G)$ is defined above and $\G$ is fixed.
+By the Kiefer--Wolfowitz equivalency theorem (see\,section 1.3)
+$$
+ g(x)\le m,x\in{\mbox{\eufrac X}},\>g(x^*_i)=m,\,\,i=1,\ldots,m.
+$$
+Since function $g(x)$ is differentiable, that implies
+$$
+ g'(x^*_i)=0,i=2,\ldots,m-1,
+$$
+where if $x^*_1\neq 0,$ then $g'(x^*_1)=0,$
+and if $x^*_n\neq d,$ then $g'(x^*_n)=0.$
+Function $\tilde{g}(x)=g(x)-m$ is represented with the sum of polynomials
+and fractions with denominators of the form
+$(x+\g_{i+l+k})^{s_1}(x+\g_{j+l+k})^{s_2},\>
+s_1,s_2=1,2,\>\>i,j=1,\ldots,k.$
+Bringing these fractions to a common denominator, reveal that
+function $\tilde{g}(x)$ has the form
+$$
+ \tilde{g}(x)=\tilde{P}(x)/Q^4(x),
+$$
+where $Q(x)=\prod_{i=1}^k (x+\g_{i+l+k}),\>\tilde{P}(x)$ is a polynomial
+of degree $\le 2m-2$ for $l>0$ and degree $2m$ for $l=0.$
+Since function $\tilde{g}(x)$ has at least $2n-2$ zeros (with taking
+into account the multiplicity), then we have $n=m,x^*_1=0$, $x^*_m=d$ for $l>0$.
+Therefore, for $l>0$ function $\tilde{g}(x)$ has the form
+$$
+ const\> x(x-d)\prodl_{i=2}^{m-1}(x-x^*_i)^2/Q^4(x).
+$$
+Now let $l=0.$
+Since by formula~(\ref{eq:detM=}) $\det M(\xi,\G)$ decreases while
+increasing all design points by the same value, then
+$x^*_1=0$ and $x^*_1$ is a zero of odd multiplicity of function $\tilde{g}(x).$
+Moreover, for $x\to\infty$ as well as for $x\to -\infty\>\>\tilde{P}(x)\sim -(mx^m)^2.$
+Therefore, function $\tilde{g}(x)$ has a zero at $c_1<0$,
+zeros of at least second multiplicity at points $x^*_i,i=2,\ldots,n-1,$
+and either zero of multiplicity $\ge 2$ at $x^*_n<d$ or one zero at
+$c_2=d$ and another at $c_3>d.$
+Since $\tilde{P}(x)$ is a polynomial of degree $2m$, then $n=m$ and
+function $\tilde{g}(x)$ has the form
+$$
+ const\> x(x-á_1)(x-á_2)(x-á_3)\prodl_{i=2}^{m-1}(x-x^*_i)^2/Q^4(x),
+$$
+where $c_1<0$ and either $x^*_m=c_2=d,c_3>d,$ or $c_2=c_3=x^*_m<d.$
+Since the number of design's points is equal to the number of parameters,
+all the points of a locally $D$-optimal design are of the same weight.
+Assume that there exist two different optimal designs $\xi_1$ and $\xi_2.$
+Then by the equivalence theorem, design $(\xi_1+\xi_2)/2$ is optimal.
+However, this design includes at least $m+1$ different points, that contradicts
+the above layout.
+\etproof
+
+Obviously, theorems~\ref{th:detM=} and~\ref{th:exist&!} imply
+validity of lemma~\ref{th:eta1=eta2}, since the vectors of the points
+of locally $D$-optimal designs for regression functions~(\ref{eq:eta1})
+and~(\ref{eq:eta}) are extremes of the functions that coincide with
+one another to constant precision.
+
+\bl
+ \label{th:x_m<d}
+ In the hypothesis of theorem~\ref{th:exist&!} for $m=2k$ and
+ sufficiently large $d$ inequality $x^*_m<d$ is valid.
+\el
+\bproof
+Let $\>x_1=0<x_2<\ldots<x_m$, $\xi=\{\indr{x}{m},1/m,\ldots,1/m\}$,
+$\delta=\min_{1\le i\le k} \g_{i+k}.$
+Then, by formula~(\ref{eq:detM=}), for $\ovl{x}_i=x_i+\delta$
+$$
+ \det M(\xi,\G)\le const\frac{1}{\delta^m}
+ \frac{1}{m^m x_m \ovl{x}_{m-1}^2\cdots\ovl{x}_2^{m-1}}=
+ \frac{1}{x_m}w(\indlr{x}{2}{m-1}),
+$$
+where $w(\indlr{x}{2}{m-1})$ is a bounded function, i.e.
+$w(\indlr{x}{2}{m-1})\le C_1,$ where $C_1$ is a constant.
+%Moreover, for some $C_2$ we have
+%\bea
+% \sup_{0\le x_i<\infty} \det M(\xi,\G)=C_2.
+%\eea
+%Whence there follow inequalities
+%\bea
+% C_2.........................
+%\eea
+Therefore, $\det M(\xi,\G)$ is small at large $x_m.$
+Hence, $x^*_m<d$ for sufficiently large $d$.
+\elproof
+
+
+\section{Basic equation}
+
+Consider dependence of the points of a locally $D$-optimal design on
+parameters $\g_{l+k+1\>},\> \ldots,$ $\>\g_{l+2k\>}$ that are nonlinear
+in the regression function being considered~(\ref{eq:eta}).
+
+Set $z=(\indr{z}{k})^T=(\indlr{\g}{1+l+k}{k+l+k})^T,$
+\bea
+ \ovl{Z}&=&\{z:\>z_i>\ve,\,\,i=1,\ldots,k\},\ve>0,\>\>\nonumber\\
+ Z&=&\ovl{Z}\cap \{z:\>z_i\neq z_j,i\neq j,i,j=1,\ldots,k\}.
+ \label{eq:Z=}
+\eea
+At first, consider $m>2k,$ i.e. $l>0,\>{\mbox{\eufrac X}}=[0,d],$
+where $d$ is an arbitrary positive number.
+Let
+\bea
+ b&=&(b_{1},\ldots,b_{m-2})^T=(x_{2},\ldots,x_{m-1})^T, \nonumber\\
+ \xi_b&=&\{0,\indlr{x}{2}{m-1},d;1/m,\ldots,1/m\},\nonumber\\
+ \ovl{V}&=&\{b:\>0\le b_1\le\ldots\le b_{m-2}\le d\},\nonumber\\
+ V&=&\ovl{V}\cap \{b:\>b_i\neq b_j,\>i\neq j,\>i,j=1,\ldots,m-2,
+b_1\ne 0,b_{m-2}\ne d\}.\nonumber
+\eea
+Introduce function
+\beq
+ \varphi(b,z)=\left(
+ \prodl_{1\le i<j\le  m}(x_j-x_i)/\prodl_{i=1}^mQ^2(x_i,z) \right)^{2/m},
+ \label{eq:hi}
+\eeq
+where $Q(x,z)=\prodl_{j=1}^k(x+z_j)$, $x_1=0$, $x_m=d$, $x_j=b_{j-1}$,
+$j=2,\ldots,m-1$.
+By theorem~\ref{th:detM=}, for any fixed $z\in Z$
+\beq
+ \varphi(b,z)=const \,[\det M(\xi_b,\G)]^{1/m}.
+ \label{eq:hi=detM}
+\eeq
+Let us define vector $\tilde{b}=\tilde{b}(z)$ for any fixed $z$
+\beq
+ \tilde{b}(z)=\arg \max_{b\in \ovl{V}} \varphi(b,z).
+ \label{eq:tildeb=}
+\eeq
+Since $\varphi(b,z)=0$ for $b\in\ovl{V}\backslash V$ and $\varphi(b,z)>0$ for $b\in V,$
+then function $\varphi(b,z)$ attains its maximum at $b\in V=int \ovl{V},$
+therefore
+\beq
+ \pdiff{b} \varphi(b,z)=0
+ \label{eq:hi'=0}
+\eeq
+for $b=\tilde{b}(z)$.
+
+
+\bl
+ \label{th:system_have_solution}
+ For any fixed $z\in Z$ equation~(\ref{eq:hi'=0})
+ has the unique solution in $V.$
+\el
+\bproof
+Let $z\in Z$ be fixed, $M(\xi)=M(\xi,\Theta)$, $\Theta_2=z$,
+$\tilde{b}=\tilde{b}(z)$ be a solution of equation~(\ref{eq:hi'=0}),
+$$
+ g(x)=f^T(x)M^{-1}(\xi_{\tilde{b}})f(x),
+$$
+where $f(x)$ is defined by formula (3.4).
+Since the weights are selected to be optimal, then
+$$
+ \left. \pdiff{\alpha} \ln \det M((1-\alpha)\xi_{\tilde{b}}+\alpha\xi_{x_i}) \
+  \right|_{\alpha=+0}\le 0,
+$$
+$x_1=0,x_m=d,x_i=\tilde{b}_{i-1},\,i=2,\ldots,m-1,\,\xi_{x_i}=\{x_i,1\}.$
+Evaluating the derivative, derive
+$$
+ g(x_i)-m\le 0,\>i=1,\ldots,m.
+$$
+Since
+$$
+ \suml_{i=1}^m g(x_i)/m=tr\> M^{-1}(\xi_{\tilde{b}},z)
+  M(\xi_{\tilde{b}},z)=m,
+$$
+then $g(x_i)=m,i=1,\ldots,m$.
+It is also valid that
+$$
+ \varphi'_{b_i}(\tilde{b},z)=g'(\tilde{b}_i),\>i=1,\ldots,m-2.
+$$
+Since equality~(\ref{eq:hi'=0}) is valid for $b=\tilde{b},$ we have
+$$
+ g'(\tilde{b}_i)=0,\>i=1,\ldots,m-2.
+$$
+While proved theorem~\ref{th:exist&!}, we had determined that
+function $\tilde{g}(x)=g(x)-m$ has the form
+\beq
+ P_{2m-2}(x)/Q^4(x),
+ \label{eq:form1}
+\eeq
+where $P_{2m-2}(x)$ is a polynomial of degree $2m-2.$
+Therefore,
+\beq
+ P_{2m-2}(x_i)=0,i=1,\ldots,m,\>\>P'_{2m-2}(x_i)=0,i=2,\ldots,m-1.
+ \label{eq:form2}
+\eeq
+Whence it follows that $P_{2m-2}(x)=const\>x(x-d)\prod_{i=2}^{m-1}(x-x_i)^2.$
+For $x\in [0,d]$ this polynomial does not exceed $0,$
+as $\tilde{g}(x)\le 0$ for $x\in [0,d],$
+i.e. $\max_{x\in{\mbox{\eufrac X}}}g(x)=m.$
+By the Kiefer---Wolfowitz equivalence theorem, this implies that
+$\xi_{\tilde{b}}$ is a locally $D$-optimal design. By
+theorem~\ref{th:exist&!}, this design is unique.
+\elproof
+
+Let
+\bea
+ J(b,z)&=&\left(\frac{\partial^2}{\partial b_i\partial b_j}\varphi(b,z)\right)_{i,j=1}^{m-2},\nonumber\\
+ J&=&J(z)=J(\tilde{b}(z),z).\nonumber
+\eea
+\bl
+ \label{th:Junspecial}
+ For $z\in Z$ matrix $J$ is nonsingular.
+\el
+\bproof
+Make use of the formula
+$$
+J=E-B^T{\cal D}^{-1}B,
+$$
+where $E=diag\{g''(\tilde{b}_1),\ldots,g''(\tilde{b}_{m-2})\}$,
+$D>0$, $D$, $B$ are defined by formula~(2.27),
+$g(x)=f^T(x)M^{-1}(\xi_{\tilde{b}},z)f(x).$
+It is sufficient to verify that all diagonal elements of matrix $E$ are
+negative. We have demonstrated above that $\tilde{g}(x)$ has the
+form~(\ref{eq:form1})-(\ref{eq:form2}), where
+$x_1=0,x_m=d,x_i=\tilde{b}_{i-1},i=2,\ldots,m-1.$
+Direct differentiation shows that $g''(\tilde{b}_i)<0,i=1,\ldots,m-2.$
+\elproof
+
+Now consider $l=0,m=2k.$
+Let $d$ be sufficiently big for $x^*_m<d$ at any $z\in \ovl{Z}.$
+Let
+\bea
+ b&=&(b_{1},\ldots,b_{m-1})^T=(\indlr{x}{2}{m})^T,\nonumber\\
+ \xi_b&=&\{0,\indlr{x}{2}{m},1/m,\ldots,1/m\},\nonumber\\
+ \ovl{V}&=&\{b:\>0\le b_1\le\ldots\le b_{m-1}\le d\},\nonumber\\
+ V&=&\ovl{V}\cap \{b:\>b_i\neq b_j,\>i\neq j,\>i,j=1,\ldots,m-1,b_1>0\}.\nonumber
+\eea
+Consider function $\varphi(b,z),$ defined by formula~(\ref{eq:hi})
+for $x_1=0,x_j=b_{j-1},j=2,\ldots,m$.
+Let $\tilde{b}=\tilde{b}(z)$ be defined by formula~(\ref{eq:tildeb=})
+for any fixed $z.$
+Then it is evident that
+$$
+ \pdiff{b} \varphi(b,z)=0
+$$
+for $b=\tilde{b}(z).$ Let
+\bea
+ J(b,z)&=&\left(\frac{\partial^2}{\partial b_i\partial b_j}\varphi(b,z)\right)_{i,j=1}^{m-1},\nonumber\\
+ J&=&J(z)=J(\tilde{b}(z),z).\nonumber
+\eea
+Note that lemmas~\ref{th:system_have_solution} and \ref{th:Junspecial}
+remain valid and their proof is similar to that adduced above.
+
+The following result follows from theorem~2.3.1 from chapter~2.
+Let vector $\tilde{b}(z)$ can be evaluated by formula~(\ref{eq:tildeb=})
+for any $z\in Z$.
+\bt
+ Vector function $\tilde{b}(z)$ is uniquely defined and it is a
+ real analytic vector function for $z\in Z,$ where $Z$ is defined
+ by formula~(\ref{eq:Z=}), and $\ve$ is a positive number.
+ The coordinates of this vector function for $z\in\ovl{Z}$
+ are the points of a locally $D$-optimal design for regression
+ function~(\ref{eq:eta}) for ${\mbox{\eufrac X}}=[0,d],$
+ where $d>0$ is arbitrary for $l>0$ sufficiently large at $l=0.$
+\et
+
+\section{Algebraic approach and limiting designs}
+
+By theorems~\ref{th:detM=} and~\ref{th:exist&!}, the problem of finding
+a locally $D$-optimal design for regression function~(\ref{eq:eta}) for
+${\mbox{\eufrac X}}=[0,d]$ can be reduced to finding the maximum of the
+following function
+$$
+ T(\indr{x}{m})=\prodl_{i=1}^m\omega(x_i)
+ \prodl_{1\le i<j\le m} (x_j-x_i)^2,
+$$
+for $0\le x_1<\ldots<x_m\le d,$
+$$
+ \omega(x)=\prodl_{i=1}^k (x+z_i)^{-4},\>0<z_1<\ldots<z_k,\>k\ge 1.
+$$
+This problem on some functions $\omega(x)$ and in particular for
+$\omega(x)=x(d-x)$ was stated and solved by Stilties (Sege, 1959, p.~159).
+Further, let us develop a method for finding locally $D$-optimal designs
+based on his idea.
+
+In this section we use two parameters $r$ and $n$
+defined in the following way:
+if $l=0$ and $d$ is sufficiently big, set $r=k-1,n=m-1,$
+otherwise set $r=k,n=m-2.$
+
+\bex
+ Let $k=1,l=0,$ i.e. regression function takes the form
+$$
+ \eta(x)=\frac{\g_1}{x+\g_2},\>\g_2>0,\g_1\neq 0.
+$$
+ Direct calculation demonstrates that locally $D$-optimal design has the form
+\bea
+ \{0,\g_2;1/2,1/2\}&\, ¯à¨\,& d>\theta_2\nonumber\\
+ \{0,d;1/2,1/2\}&\, ¯à¨\,& d\le\theta_2.\nonumber
+\eea
+\eex
+
+$\!\!$Let $r\!\ge\! 1,\psi(x)$ be a polynomial of degree $n,$
+$\psi(x)\!=\!\sum_{i=0}^n\! \psi_ix^{n-i},$
+$\psi\!=\!(\indlr{\psi}{0}{n})^T$ be a vector of its coefficients.
+Let us use the following notation in this section
+$$
+ f(x)=(x^{r+n},x^{r+n-1},\ldots,x,1)^T.
+$$
+Consider the case $r\ge 1,l=0,r=k-1.$
+Let $(r+n+1)\times (n+1)$ matrix $A=(a_{ij})$ be defined by equality
+\bea
+ f^T(x)A\psi&=&\psi''(x)x\prodl_{i=1}^k (x+z_i)+\nonumber\\
+  &+&2\psi'(x)\left(\prodl_{i=1}^k (x+z_i)
+   -2x\suml_{j=1}^k \prodl_{i\neq j} (x+z_i)\right).
+ \label{eq:fApsi=}
+\eea
+It is easy to verify that matrix $A$ is uniquely defined and
+$a_{ij}=0,j>i,i=1,\ldots,n-1.$
+Introduce the following $(r+n+1)\times (n+1)$ matrices
+\bea
+ E_0&=&(\one,\OO{(n+1)}{r})^T,\nonumber\\
+ E_1&=&(\OO{(n+1)}{1},\one,\OO{(n+1)}{(r-1)})^T,
+ \ldots,
+ E_r=(\OO{(n+1)}{r},\one)^T,\nonumber
+\eea
+where $\one$ is the identity matrix of order $(n+1)\times (n+1),$
+$\OO{s_1}{s_2}$ is the zero $s_1\times s_2,$ matrix
+$$
+ B=A-\suml_{i=0}^r \la_iE_i,\>
+ \la_0=n(n-1)+2n(1-2k).
+$$
+Denote the elements of matrix $B$ with $b_{ij}.$
+Let $B_{(i)}$ be a matrix, composed by
+$(i+1),\ldots,(i+n+1)$-th lines of matrix $B$ (i.e. $B_{(i)}=E_i^T B$),
+$B_{(i)}=B_{(i)}(\la),\la=(\indr{\la}{r}).$
+Set $Q_i=Q_i(\la)=\det B_{(i)}(\la).$
+Note, that for given $\indr{\la}{r}$ the elements of vector $\psi$
+satisfy the following recurrent relations
+\beq
+ \psi_0=\la_0,\>
+ \psi_{s+1}=-\suml_{j=1}^s b_{s+1,j}\psi_j/b_{s+1,s+1},s=0,\ldots,n-1.
+ \label{eq:psi_rek_form}
+\eeq
+If $l>0$ or $l=0,$ but $x^*_m>d,$ replace equality~(\ref{eq:fApsi=})
+with equality
+\bea
+ f^T(x)A\psi\!&=&\!\psi''(x)x(x\!-\!d)\prodl_{i=1}^k (x\!+\!z_i)+\nonumber\\
+  &+&2\psi'(x)\left(\! (2x\!-\!d)\prodl_{i=1}^k (x\!+\!z_i)
+   \!-\!2x(x\!-\!d)\suml_{j=1}^k \prodl_{i\neq j} (x\!+\!z_i)\!\right)\!.\nonumber
+\eea
+
+The following theorem is valid.
+\bt
+ \label{th:sumQ}
+ For $r\ge 1$ there exists the unique solution of problem
+ \beq
+ \suml_{i=1}^r Q^2_i(\la)\to\min_{\la\in\IR^r},
+ \label{eq:sumQ}
+ \eeq
+ such that the points of locally $D$-optimal design for regression
+ function~(\ref{eq:eta}) that are neither $0$ nor $d,$ are the zeros
+ of polynomial
+$$
+ \psi(x)=\psi_0x^n+\psi_1x^{n-1}+\cdots+\psi_n,
+ $$
+ and coefficients $\indlr{\psi}{0}{n}$ can be evaluated by recurrent
+ formulas~(\ref{eq:psi_rek_form}) at $\la,$, where the minimum is attained.
+\et
+\bproof
+Consider $l=0,d>x^*_m,$
+where $x^*_m$ is the largest point of the locally $D$-optimal design
+for regression function~(\ref{eq:eta}) on ${\mbox{\eufrac X}}=[0,d].$
+As it have been demonstrated above, $x^*_1=0$ and function
+$T(0,\indlr{x}{2}{m})$ has the only stationary point and
+\beq
+ \pdiff{x_i}T(0,\indlr{x}{2}{m})=0,\>i=2,\ldots,m,
+ \label{eq:T'=0}
+\eeq
+for $x_j=x^*_j,j=2,\ldots,m.$
+Consider function $\psi^*(x)=\la_0\prod_{i=2}^m(x-x^*_i).$
+It is easy to verify that the following equality is valid
+for $\psi(x)=\psi^*(x)$
+$$
+ \frac{1}{2}\frac{\psi''(x_i)}{\psi'(x_i)}=
+ \suml_{j\neq i} \frac{1}{x_i-x_j},
+$$
+where $x_l=x^*_l,l=2,\ldots,m.$
+Note, that equality~(\ref{eq:T'=0}) has the form
+$$
+ \suml_{j\neq i} \frac{1}{x^*_i-x^*_j}+\frac{1}{x^*_i}-
+ \suml_{l=1}^k \frac{2}{x^*_i+z_l}=0,\>i=2,\ldots,m.
+$$
+Therefore,
+$$
+ \frac{1}{2}\frac{\psi''(x)}{\psi'(x)}+\frac{1}{x}-
+ \suml_{l=1}^k \frac{2}{x+z_l}=0
+$$
+for $x=x^*_i,i=2,\ldots,m.$
+Bringing the left-hand side of the equality to a common denominator, derive
+\beq
+ \psi''(x)x\prodl_{l=1}^k(x+z_l)+2\psi'(x)\left(
+ \prodl_{l=1}^k(x+z_l)-2x\suml_{i=1}^k
+ \prodl_{l\neq i}(x+z_l)\right)=0
+ \label{eq:numer=0}
+\eeq
+for $x=x^*_i,i=2,\ldots,m.$
+Polynomial in the left-hand side of this equality has degree $\le n+r$ and
+it is divisible by $\psi(x).$
+Therefore, it has the form
+\beq
+ f^T(x)A\psi=q(x)\psi(x)/\psi_0,
+ \label{fApsi=qpsi}
+\eeq
+where $q(x)=\sum_{i=0}^r \la_ix^{r-i},$
+$A$ is some $(n+r+1)\times (n+1)$ matrix.
+Note, that equality~(\ref{fApsi=qpsi})
+can be represented in the form
+$$
+ f^T(x)B\psi=0,
+$$
+whence it follows that $\det B_{(i)}=0$, $i=1,\ldots,r.$
+Since by lemma~\ref{th:system_have_solution} the stationary point of the
+function $T(0,\indlr{x}{2}{m})$ exists and is unique for $0<x_2<\ldots<x_m$,
+then polynomial $\psi(x),$ having $m-1$ real zeros $\indlr{x}{2}{m}$
+on $(0,\infty)$ and satisfying equality~(\ref{eq:numer=0}) for
+$x=x_i,i=2,\ldots,m,$, exists and is unique. Therefore, there exists
+a point $\la=\la^*\in\IR^r$ that solves problem~(\ref{eq:sumQ}) and such that
+the coefficients of polynomial $\psi(x)$ are defined by recurrent
+formulas~(\ref{eq:psi_rek_form}). Since matrix $A$ is uniquely defined and
+$f^T(x)A\psi=q(x)\psi(x)/\psi_0,$ then $\la^*$ is also defined uniquely.
+
+The proof for $d<x^*_m$ is similar as well as that for $l>0$.
+\etproof
+
+
+Demonstrate the sense of theorem~\ref{th:sumQ} by applying it to the
+following example.
+\bex
+\label{ex:ex2}
+Let $k=2,l=0,$ i.e. the regression function has the form
+$$
+\eta(x,\G)=\frac{\g_1}{x+\g_3}+\frac{\g_2}{x+\g_4},
+$$
+$\g_1,\g_2\neq 0,\>\g_3,\g_4>0,\>x\in{\mbox{\eufrac X}}=[0,d],$
+$d$ is sufficiently large.
+In this case $n=m-1=3,r=k-1=1.$
+Set $z_1=\g_3,z_2=\g_4,\dd=z_1+z_2.$
+At first, consider $z_1z_2=1.$
+Matrix $B_{(1)}$ has the form
+$$
+ \left(
+\begin{array}{cccc}
+-\la & 2 & 0 & 0 \\
+ 12 & -2\dd-\la & 6 & 0 \\
+ 0 & 6 & -2\dd-\la & 12 \\
+ 0 & 0 & 2 & -\la \end{array} \right),
+$$
+$\det B_{(1)}=(\la^2-2\dd\la-24)^2-36\la^2,\>\la_0=-12.$
+Whence it follows that $\psi_1=\la/2,\>\psi_2=((\la+2\dd)\la/2-12)/6,$
+$\psi_3=(-(\la+2\dd)\psi_2-6\la/2)/12, \psi_3=2\psi_2/\la.$
+Derive from these equalities, that $\psi_2=\pm\la/2,\psi_3=\pm 1.$
+Since $\psi(x)$ has only the positive zeros, then
+$\psi_1<0,\psi_2>0,$ hence $\la<0,\psi_2=-\la/2$ and
+$\la^2+(2\dd+6)\la-24=0.$
+Therefore,
+$$
+ \la^*=-\dd-3-\sqrt{(\dd+3)^2+24}
+$$
+is the unique solution of equation $\det B_{(1)}=0$
+at which all the zeros of the corresponding polynomial $\psi(x)$ are
+positive numbers,
+and $\psi(x)$ assumes the form
+$$
+ x^3-\frac{\la^*}{2}x^2+\frac{\la^*}{2}x-1=
+ (x-1)(x^2+(1-\frac{\la^*}{2})x+1).
+$$
+Therefore,
+$$
+ x^*_3=1,\>x^*_{2,4}=\frac{1}{2}\left(
+ \frac{\la^*}{2}-1\mp\sqrt{(\frac{\la^*}{2}-1)^2+4}\right).
+$$
+For arbitrary $z_1,z_2$, derive by the linear transformation of the model
+$$
+ x^*_3=\sqrt{z_1z_2},\>x^*_{2,4}=\frac{\sqrt{z_1z_2}}{2}\left(
+ \frac{\la^*}{2}-1\mp\sqrt{(\frac{\la^*}{2}-1)^2+4}\right).
+$$
+Locally $D$-optimal design has the form
+$$
+ \{0,x^*_2,x^*_3,x^*_4;1/4,1/4,1/4,1/4\}.
+$$
+\eex
+
+Deriving explicit analytic expressions for the points of
+a locally $D$-optimal design by means of the above algebraic method
+seems to be impossible for $r\ge 2$. Nevertheless, in this case the
+functional approach provides expanding the design's points into the Taylor
+series with respect to the powers of $\indr{z}{k}.$ In this view, an
+expression for the points of design at some specially selected point
+$z_{(0)}$ is needed.
+
+Note, that for
+$z\to z_{\alpha}=(\alpha,\ldots,\alpha)^T$
+variable $\det M(\xi,z)\to 0.$
+However, vector $\tilde{b},$ composed by the design's points that
+are distinct from the ends of the interval $[0,d],$ can be evaluated
+for $z_{\alpha}=(\alpha,\ldots,\alpha)^T$ and its coordinates are
+the limits of the locally $D$-optimal design for $z\to z_{\alpha}.$
+Set $\alpha=1.$ At first, consider $l=0$ and sufficiently big $d$.
+In this case, we have the following equation for function $\psi(x),$
+which has been defined above:
+\bea
+ &&\psi''(x)x(x+1)+2\psi'(x)(x(1-2k)+1)\!=\!\la_0\psi(x),\nonumber\\
+ &&\la_0\!=\!(m-1)(m-2)+2(m-1)(1-2k).\nonumber
+\eea
+Equating to one another the coefficients near the same degrees of $x$ in the left- and
+right-hand sides, derive
+\bea
+ \psi_1&=&\frac{m(m-1)}{2(m-2k-1)},\nonumber\\
+ \psi_{s+1}&=&\psi_s
+  \frac{(m-s)(m-s-1)}{m(2s-1)-2(s+1)(1-2k)},s=1,2,\ldots,m-1.
+ \label{eq:psi_s=}
+\eea
+Thus, the following theorem is valid.
+\bt
+ \label{th:design1..1}
+ For $m=2k$, ${\mbox{\eufrac X}}=[0,d],$ where $d$ is sufficiently large,
+ nonzero points of the locally $D$-optimal design for regression
+ function~(\ref{eq:eta}) converge to the zeros of polynomial $\psi(x),$,
+ which coefficients can be evaluated by formulas~(\ref{eq:psi_s=}) for
+ any $k\ge 1,$ while $z\to (1,\ldots,1)^T$.
+\et
+
+Demonstrate the sense of theorem~\ref{th:design1..1} by applying it to the
+following example.
+\bex
+\label{ex:ex3}
+Let $k=3,m=6,$ i.e. the regression function has the form
+$$
+\eta(x,\G)=\frac{\g_1}{x+\g_4}+\frac{\g_2}{x+\g_5}+\frac{\g_3}{x+\g_6},
+$$
+$\g_1,\g_2,\g_3\neq 0,\>\g_4,\g_5,\g_6>0,\>x\in{\mbox{\eufrac X}}=[0,d],$
+$d$ is sufficiently large.
+Let $z_i=\g_{i+3}\to 1,i=1,2,3.$
+Applying theorem~\ref{th:design1..1}, obtain
+\bea
+ \psi(x)&=&x^5-15x^4+50x^3-50x^2+15x-1=\nonumber\\
+ &=&(x-1)(x^4-14x^3+36x^2-14x+1)=\nonumber\\
+ &=&(x-1)(x^2+(-7+\sqrt{15})x+1)(x^2+(-7-\sqrt{15})x+1).\nonumber
+\eea
+Whence it follows that
+$$
+\begin{array}{lclcr}
+ x^*_2 & = & (7+\sqrt{15}-\sqrt{60+14\sqrt{15}})/2 & \approx & 0.0927, \\
+ x^*_3 & = & (7-\sqrt{15}-\sqrt{60-14\sqrt{15}})/2 & \approx & 0.3616, \\
+ x^*_4 & = & 1, & & \\
+ x^*_5 & = & (7-\sqrt{15}+\sqrt{60-14\sqrt{15}})/2 & \approx & 2.765,\\
+ x^*_6 & = & (7+\sqrt{15}+\sqrt{60+14\sqrt{15}})/2 & \approx & 10.78.\\
+\end{array}
+$$
+In the following section, we are to use this design to find an
+expansion of the design's points with respect to $\du=z_2-1,\dv=z_3-1$
+at $z_1=1.$ For arbitrary $z_1$ the design can be obtained by multiplying
+all the points by $z_1.$
+\eex
+
+
+Now consider the case that either $d>0$ is arbitrary and $l>0,$
+or $l=0$ and $d$ is sufficiently small.
+By theorem~\ref{th:exist&!}, in both cases points $x^*_1$ and $x^*_m$
+have the form $x^*_1=0,x^*_m=d.$
+Let $\psi(x)=\prod_{i=2}^{m-1}(x-x^*_i)=\sum_{i=0}^{m-2}\psi_ix^{m-2-i},$
+$\psi_0=1.$ Note, that for some $\la\in\IR$ this function satisfies
+equation
+\bea
+ \psi''(x)x(x-d)(x+1)&+&2\psi'(x)((2x-d)-x(x-d)2k))=\nonumber \\
+&=&(\la_0x+\la)\psi(x),\\
+\label{eq:eq_for_psi&la}
+ \la_0&=&(m-2)(m-3)+2(m-2)(2-2k).\nonumber
+\eea
+Let $A$ be a $m\times (m-1)$ matrix, such that the left-hand side of the
+equation is equal to
+$$
+ f^T(x)A\psi,\>\>f(x)=(x^{m-1},\ldots,x,1)^T.
+$$
+Let
+$$
+ B=B(\la)=A-\la_0E_0-\la E_1,\>\>B_{(1)}=B_{-},
+$$
+where '$\>\!\!_{-}$' means rejecting the first line of a matrix,
+matrices $E_0$ and $E_1$ are introduced above.
+The following result can be verified similarly to the proof of
+theorem~\ref{th:sumQ}.
+\bt
+ For $m=2k$ and sufficiently small $d>0$ as well as for $m>2k$ and
+ arbitrary $d>0$, there exists the unique solution of equation
+$$
+ \det B_{(1)}(\la)=0
+ $$
+ for $\la=\la^*\in\IR$, such that the points of locally $D$-optimal
+ design that are neither $0$ nor $d,$ converge at $z\to (1,\ldots,1)^T$
+ to the zeros of polynomial $\psi(x),$ which solves equation (3.23) for
+ $\la=\la^*.$ Coefficients of this polynomial can be evaluated by recursive
+ formulas (3.16).
+\et
+
+%Substituting $z_1=z_2=1$ to the expression for the design's points
+%obtained in example~\ref{ex:ex2}, we have
+%$$
+% x^*_4\to(5+\sqrt{21})/2 \mbox{ for } z_1,z_2\to 1.
+%$$
+%\bex
+%\label{ex:ex4}
+%Let $l=0,k=2,$ $d$ be sufficiently small, exactly $d<(5+\sqrt{21})/2.$
+%In this case
+%$$
+% \psi(x)=(x-x^*_2)(x-x^*_3)=x^2+\psi_1x+\psi_2.
+%$$
+%Equation~(\ref{eq:eq_for_psi&la}) takes the form
+%\bea
+% &&2x(x+1)(x-d)+2(2x+\psi_1)(-2x^2+(1+4d)x-d)\!=\!\nonumber\\
+% &&=(\la_0x+\la)(x^2+\psi_1x+\psi_2),\>\la_0\!=\!-6.\nonumber
+%\eea
+%Matrix $B_{(1)}$ has the form
+%$$
+% \left(\begin{array}{ccc}
+% 14d+6-\la & 2d & 0 \\
+% -6 & 2(1+4d)-\la & 6 \\
+% 0 & -2d & -\la  \end{array}  \right),
+%$$
+%\beq
+% \psi_1=(\la-6-14d)/2d,\>\>
+% \psi_2=(6+14d-\la)/\la.
+% \label{eq:ex4}
+%\eeq
+%Note, that for $d=1$
+%$$
+% \det B_{(1)}=(\la-10)(\la^2-20\la+24)
+%$$
+%and $\la^*=10+2\sqrt{19}$ is the unique solution of equation
+% $\det B_{(1)}(\la)=0,$ for which
+%corresponding polynomial $\psi(x)$ has two zeros inside
+%the interval $(0,d).$
+%Whence it follows (by continuity) that for arbitrary $d$ $\la^*$
+%is the maximal positive
+%zero of equation $\det B_{(1)}(\la)=0,$ i.e. of equation
+%$$
+% \la^3-(22d+8)\la^2+(112d^2+100d+12)\la-12d(14d+16)=0.
+%$$
+%The points of the optimal design have the form $x^*_1=0,x^*_4=d,$
+%$$
+% x^*_{2,3}=-\frac{\psi_1}{2}\mp\sqrt{\frac{\psi_1^2}{4}-\psi_2},
+%$$
+%where $\psi_1$ and $\psi_2$ are defined by formula~(\ref{eq:ex4}) for $\la=\la^*.$
+%\eex
+
+
+\section{The Taylor expansion}
+
+As it have been proved in lemma~\ref{th:Junspecial}, matrix
+$J=J(z)$ is nonsingular for any $z\in Z$
+as well as for $z=z_{(0)}=(1,\ldots,1)^T.$
+Moreover, the previous section presents a method of solving equation
+\beq
+ \pdiff{b}\varphi(b,z)=0
+ \label{eq:hi'b=0}
+\eeq
+at point $z=z_{(0)}.$ Therefore, Algorithm 1 from chapter 2 can be used
+to expand the points of a locally $D$-optimal design into the Taylor series.
+
+Consider $k=3,m=6,d>x^*_m.$
+Let $z_1=1,z_2=1+\du,z_3=1+\dv.$
+Let us construct the expansion of the points of a locally $D$-optimal
+design into the Taylor series with respect to the powers of $\du$ and $\dv.$
+For arbitrary $z_1=\gamma,z_2,z_3$ the design can be obtained by
+multiplying the points of the design, constructed for
+$z_1=1,\du=z_2/\gamma-1,\dv=z_3/\gamma-1,$ by $\gamma$
+
+Adopt equation~(\ref{eq:hi'b=0}) to this case
+$$
+ \frac{1}{x_j}+\suml_{i\neq j}\frac{1}{x_j-x_i}-
+ 2\left( \frac{1}{x_j+1}+\frac{1}{x_j+1+\du}+\frac{1}{x_j+1+\dv} \right)=0,
+$$
+$j=2,\ldots,6.$ Set $u=\du\dv,v=\du+\dv.$
+Rewrite the equation in the form
+$$
+ \frac{1}{x_j}+\suml_{i\neq j}\frac{1}{x_j-x_i}-
+ 2\left( \frac{1}{x_j+1}+\frac{2x_j+2+v}{x_j^2+(2+v)x_j+1+u+v} \right)=0,
+$$
+$j=2,\ldots,6.$ It follows from this equation that the points of the optimal
+design are functions of arguments $u$ and $v$ and they can be expanded into
+the Taylor series with respect to the powers of $u$ and $v$ in a vicinity
+of point $(0,0)$
+$$
+ x^*_{i+1}(u,v)=\tilde{b}_i(u,v)=
+ \suml_{s_1=0}^{\infty}\suml_{s_2=0}^{\infty}b_{i(s_1,s_2)}u^{s_1}v^{s_2},
+$$
+$i=1,\ldots,5.$
+Applying the algorithm from chapter~2, tabulate the coefficients
+$\{b_{i(s_1,s_2)}\}$ (Tab. 3.1). In this table, block numbered $(s_1,s_2)$
+contains coefficient vector $(b_{1(s_1,s_2)},\ldots,b_{5(s_1,s_2)})^T.$
+
+\btb
+\caption{The expansion coefficients.\hfill}
+\begin{center}
+\begin{tabular}{|c|r|r|r|r|}
+\hline
+$s_1\backslash s_2$ & $0\quad$ & $1\quad$ & $2\quad$ & $3\quad$ \\
+\hline
+&       0.093   & 0.031 & -0.015& 0.009 \\
+&       0.362   & 0.121 & -0.050& 0.029 \\
+0&      1.000   & 0.333 & -0.111& 0.058 \\
+&       2.765   & 0.922 & -0.229& 0.113 \\
+&       10.780  & 3.593 & -0.655& 0.321 \\
+\hline
+&       0.045   & -0.033& 0.027  \\
+&       0.151   & -0.103& 0.084  \\
+1&      0.333   & -0.207& 0.164  \\
+&       0.686   & -0.395& 0.307  \\
+&       1.966   & -1.118& 0.866  \\
+\cline{1-4}
+&       -0.015  & 0.026  \\
+&       -0.048  & 0.080  \\
+2&      -0.095  & 0.155  \\
+&       -0.180  & 0.286  \\
+&       -0.509  & 0.804  \\
+\cline{1-3}
+&       0.008    \\
+&       0.025    \\
+3&      0.049    \\
+&       0.090    \\
+&       0.253    \\
+\cline{1-2}
+\end{tabular}
+\end{center}
+\etb
+
+
