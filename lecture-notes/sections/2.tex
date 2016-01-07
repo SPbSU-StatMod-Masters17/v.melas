@@ -58,16 +58,16 @@ $$M(\xi, \theta_u) = \int\limits_{\mathbb{X}} f(x, \theta)\Tr{f(x, \theta)}d\xi(
 Разложим $\eta$ в ряд Тейлора в окресности $\theta^0 \in \Theta \subset \R^m$:
 $$\eta(x, \theta) = \eta(x, \theta^0) + \Tr{(\theta-\theta^0)}f(x, \theta^0) + r(x,\theta)$$
 Введем следующие обозначения:
-$$ \Tr{f(x)} = \Tr{f(x, \theta^0)} = \left(\frac{\partial(x, \theta^0)}{\partial(\theta_i}, …, \frac{\partial x, \theta_0}{\theta_m}\right)$$
-$$ M(\xi) = M(\xi, \theta^0) = \int\limits_{\mathbb{X}} f(x) \Tr{f(x)d\xi(x)}$$
+$$ \Tr{f(x)} = \Tr{f(x, \theta^0)} = \left(\frac{\partial \eta(x, \theta^0)}{\partial\theta_1}, …, \frac{\partial \eta(x, \theta^0)}{\partial \theta_m}\right)$$
+$$ M(\xi) = M(\xi, \theta^0) = \int\limits_{\mathbb{X}} f(x) \Tr{f(x)}d\xi(x)$$
 $$d(x, \xi) = \Tr{f(x)} M^{-1}(\xi)f(x)$$
 
 Для данных обозначение будет верна следующая теорема:
 \begin{thm}[Эквивалентности]
 План $\xi^*$ является локально D-оптимальным для модели \eqref{basicModel} тогда и только тогда, когда 
-$$ m = \max\limits_{x\in \mathbb{X}} d(x, \theta^*)$$
+$$ m = \max\limits_{x\in \mathbb{X}} d(x, \xi^*)$$
 Кроме того, 
-$$ \max \limits_{x \in \mathbb{X}} d(x, \theta^*) = \inf\limits_{\xi}\max\limits_{x\in\mathbb{X}} d(x, \theta)$$
+$$ \max \limits_{x \in \mathbb{X}} d(x, \xi^*) = \inf\limits_{\xi}\max\limits_{x\in\mathbb{X}} d(x, \xi)$$
 Функция $d(x, \xi^*)$ достигает максимального значение во всех точках любого локального D-оптимального плана.
 Информационные матрицы всех локально D-оптимального планов совпадают.
 \end{thm}
