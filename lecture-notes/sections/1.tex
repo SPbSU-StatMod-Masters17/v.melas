@@ -16,18 +16,19 @@
     \label{sec1::eq::nonlinear_model}
     y_j = \eta(x_j, \Theta) + \eps_j,
 \end{gather}
-где $x_1, x_2, \ldots, x_N \in \mathcal X$ --- <<условия эксперимента>>, $\Theta = \Tr{(\theta_1, \theta_2, \ldots, \theta_m)} \in \R^m$,
+где $x_1, x_2, \ldots, x_N \in \mathcal X$ --- <<условия эксперимента>>, $\Theta = \Tr{(\theta_1, \theta_2, \ldots, \theta_m)} \in \Omega \subset \R^m$,
 а $\eps_1, \eps_2, \ldots, \eps_N$ --- некоррелированные, центрированные, гомоскедастичные случайные величины, т.е.
 $\mathbb E \eps_j = 0$ и $\mathbb D \eps_j = \sigma^2$ для всех $j \in 1:N$.\footnote{Естественно $\eps_j$ играют роль ошибок измерения, шума.}
 
 \textbf{Задача:} оценить параметр $\Theta$.
-Ясно, что задача является регрессионной, причем функция $\eta$ является регрессией.
+Ясно, что задача является регрессионной, причем функция $\eta$ является регрессией.\footnote{Мы опускаем здесь вопросы аккуратной формализации
+задачи, так чтобы полностью оправдать термин регрессии, как условного математического ожидания.}
 
 Нужно формально объяснить, что значит <<нелинейная модель>>, то есть чем эта модель отличается от <<линейной>>.
 Будем говорить, что параметр $\theta_j$, где $j \in 1:m$, входит нелинейно в модель \eqref{sec1::eq::nonlinear_model},
 если при фиксированном $x$
 \begin{gather*}
-    \frac{\partial \eta(x, \cdot)}{\partial \theta_j}(\theta_j)
+    \frac{\partial \eta(x, \cdot)}{\partial \theta_j}
 \end{gather*}
 существует и не является постоянной. Если же указанная функция является постоянной, то говорим, что параметр $\theta_j$ входит в модель линейно.
 Если есть хотя бы один параметр $\theta_j$, который входит в модель нелинейно, то модель \eqref{sec1::eq::nonlinear_model} называют нелинейной.
@@ -62,7 +63,7 @@ $\mathbb E \eps_j = 0$ и $\mathbb D \eps_j = \sigma^2$ для всех $j \in 1
 Пусть $\Omega$ --- ограниченное замкнутое множество в $\R^m$, $\mathcal X$ --- ограниченное замкнутое множество в $\R^k$,
 где $k \in \N$.
 
-Пусть функция регрессии $\eta_(x, \Theta)$ нелинейна по параметрм и определена при всех $x \in \mathcal X$, $\Theta \in \Omega$.
+Пусть регрессия $\eta(x, \Theta)$ нелинейна по параметрм и определена при всех $x \in \mathcal X$, $\Theta \in \Omega$.
 Через $\Theta_u$ будем обозначать истинное значение вектора параметров, т.е. такое значение $\Theta$, при котором верна модель
 \eqref{sec1::eq::nonlinear_model}.
 
@@ -71,7 +72,15 @@ $\mathbb E \eps_j = 0$ и $\mathbb D \eps_j = \sigma^2$ для всех $j \in 1
 \begin{gather*}
 \int_\mathcal X g(x)\, d\xi(x) = \sum_{i = 1}^n g(x_i) \mu_i,
 \end{gather*}
-где $g$ --- произвольная функция, определенная на $\mathcal X$\footnote{На самом деле тут должна быть измеримость по мере, почему мы ее не требуем?}.
+где $g$ --- произвольная функция, определенная на $\mathcal X$\footnote{На самом деле тут должна быть измеримость по мере, почему мы ее не требуем? Подумайте!}.
+
+Пусть 
+\begin{gather*}
+    \xi_N = \{x_1, x_2, \ldots, x_N; 1/N, 1/N, \ldots 1/N\},
+\end{gather*}
+где $x_i$ --- необязательно различные точки,
+
+{\color{blue} У нас здесь неявно предполагается, что на самом деле есть распределение на множестве точек плана видимо. Иначе непонятно, как $N \to \infty$... }
 
 Введем предположения:
 \begin{enumerate}
@@ -82,7 +91,7 @@ $\mathbb E \eps_j = 0$ и $\mathbb D \eps_j = \sigma^2$ для всех $j \in 1
     имеется слабая сходимость распределений $\mathcal L(\xi_N) \Rightarrow \mathcal L(\xi)$, где $\xi$ --- некоторый план, то есть
     для любой функции $g \in \mathrm C(\mathcal X)$ имеет место сходимость
     \begin{gather*}
-        \int_\mathcal X g(x)\, d \xi_N(x) = \int_\mathcal X g(x)\, d \xi(x);
+        \int_\mathcal X g(x)\, d \xi_N(x) \rightarrow  \int_\mathcal X g(x)\, d \xi(x);
     \end{gather*}
 
     \item 
@@ -113,11 +122,7 @@ $\mathbb E \eps_j = 0$ и $\mathbb D \eps_j = \sigma^2$ для всех $j \in 1
     не вырождена при $\Theta = \Theta_u$.
 \end{enumerate}
 
-Теперь пусть 
-\begin{gather*}
-    \xi_N = \{x_1, x_2, \ldots, x_N; 1/N, 1/N, \ldots 1/N\},
-\end{gather*}
-где $x_i$ --- необязательно различные точки,
+Обозначим
 \begin{gather}
     \label{sec1::eq::ls_est}
     \hat \Theta_N = \argmin_{\Theta \in \Omega} \sum_{i = 1}^N (\eta(x_i, \Theta) - y_i)^2.
