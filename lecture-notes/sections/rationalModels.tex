@@ -39,7 +39,7 @@ x_2 + b & 1 \\
 \end{pmatrix}
 \end{equation}
 \begin{equation*}
-\det … \sim \frac{x_2 - x_1}{(x_1+b)^2(x_2+b)^2} (x_1 > x_2)
+\det … \sim \frac{x_2 - x_1}{(x_1+b)^2(x_2+b)^2} (x_1 < x_2)
 \end{equation*}
 
 $\sim$ в последнем равенстве означает, что нам достаточно максимизировать данное выражение (мы предполагаем, что $x_1 < x_2$). Пусть $x_1 \neq 0$. Тогда сдвинув на $x_1$ $x_2$ и $x_1$ числитель не поменяется, а знаменатель уменьшится. Значит $x_1 = 0$. Остается решить тривиальную задачу одномерной максимизации\footnote{надеюсь все с этим могут справиться. Можно чуть упростить жизнь, взяв логарифмы.} и получить, что $x_2 = b$.
@@ -89,14 +89,14 @@ $$x = \frac{bd}{2b + d}$$
 
 \begin{align}
 f_i(x) &= \frac{x^{i-1}}{Q(x)}, i =1 … d_2 \\
-f_{j}(x) &= \frac{x^{i-1}}{Q(x)^2}P(x), j = 1…(d_1-1)
+f_{j}(x) &= \frac{x^{j-1}}{Q(x)^2}P(x), j = 1…(d_1-1)
 \end{align}
 
 Пусть $F = \Tr{(f_1, …, f_{2k})}$. Тогда 
 \begin{thm}
 \begin{equation}
 \label{rationModelDet}
-\det F = \frac{\prod\limits_{i,j} (x_j - x_i)}{\prod\limits_{i} Q^2(x_i)}
+\det F = \frac{\prod\limits_{i<j} (x_j - x_i)}{\prod\limits_{i} Q^2(x_i)}
 \end{equation}
 \end{thm}
 \begin{proof}
@@ -153,7 +153,7 @@ $$\xi = \begin{pmatrix} x_1 & … & x_n \\ w_1 & … & w_n \end{pmatrix}$$
 Обозначим $g(x) = \Tr{f(x)}M^{-1}(\xi)f(x) Q^{4}(x) - 2k Q^{4}(x)$, где 
 $$Q(x) = \prod (x+ \theta_{2i})$$
 Ясно\footnote{проверяется прямым вычислением — $f_i(x)$ является дробью вида 
-$\frac{1}{(x+\theta)^{1 \text{ or } 2}}$}, что $g(x)$ является многочленом степени $4k$. В точках $x_i$, $i=2, …, 2k-1$ у этого многочлена нули второй кратности (т.к. $g(x)$ всегда одного знака по построению), а в $x_1$ и $x_{n}$ нули хотя бы первой кратности. 
+$\frac{1}{(x+\theta)^{1 \text{ or } 2}}$}, что $g(x)$ является многочленом степени $4k$. В точках $x_i$, $i=2, …, n - 1$ у этого многочлена нули второй кратности (т.к. $g(x)$ всегда одного знака по построению), а в $x_1$ и $x_{n}$ нули хотя бы первой кратности. 
 Далее, как не раз замечали, $n \geq 2k$, иначе $\det M(\xi) = 0$. 
 Пусть $n \geq 2k+1$. В таком случае у $g(x)$ с учетом кратности по крайне мере $2(2k-1) +2 = 4k$ нуля. Далее
 если $x_n = d$ и $d$ — нуль кратности один, то $g(d+\varepsilon) > 0$ в некоторой окрестности точки $d$, а при 
@@ -173,15 +173,15 @@ $$\det G = \frac{\prod\limits_{j>i} (x_j-x_i) \prod\limits_{j>i}(b_j - b_i)}{\pr
 \begin{equation}
 \begin{split}
 G_1 = (\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{2k}(x_i+b_j)) \det G \\
-G_1 = \det\left( \prod\limits_{j\neq 1} (x_i-b_j), …, \prod\limits_{j\neq 2k} (x_i-b_j)\right)_{i=1}^{2k}\\
+G_1 = \det\left( \prod\limits_{j\neq 1} (x_i+b_j), …, \prod\limits_{j\neq 2k} (x_i+b_j)\right)_{i=1}^{2k}\\
 \end{split}
 \end{equation}
 Вычтем первый столбце из остальных и получим
-$$G_1 = \det\left( \prod\limits_{j\neq 1} (x_i-b_j),\prod\limits_{j\neq 1,2} (x_i-b_j) (b_2 - b_1) …, \prod\limits_{j\neq 1, 2k} (x_i-b_j) (b_{2k} - b_1)\right)_{i=1}^{2k}$$
-вынесем $(b_j-b_1)$ из всех столбцов столбцов и повторим операцию, вычитая второй столбец из третьего и т.д. Получим:
-$$G_1 = \prod\limits_{j>i}(b_j - b_i) \det \left(\prod(j\neq 1)(x_i - b_j), \prod\limits_{j\neq 1,2}(x_i-b_j),…,1\right)$$ 
+$$G_1 = \det\left( \prod\limits_{j\neq 1} (x_i+b_j),\prod\limits_{j\neq 1,2} (x_i+b_j) (b_1 - b_2) …, \prod\limits_{j\neq 1, 2k} (x_i+b_j) (b_{1} - b_{2k})\right)_{i=1}^{2k}$$
+вынесем $(b_1-b_j)$ из всех столбцов столбцов и повторим операцию, вычитая второй столбец из третьего и т.д. Получим:
+$$G_1 = \prod\limits_{j>i}(b_i - b_j) \det \left(\prod_{j\neq 1}(x_i + b_j), \prod\limits_{j\neq 1,2}(x_i+b_j),…,1\right)$$ 
 Далее у нас каждый столбец — почти $x^j$, но с некоторыми плохими коэффициентами. Приводим его линейными преобразованиями к стандартному:
-$$G_1 - \prod \limits_{j>i}(b_j - b_i) \det(x_i^{2k-1}, x_i^{2k-2},…, x_i,1)$$
+$$G_1 - \prod \limits_{j>i}(b_i - b_j) \det(x_i^{2k-1}, x_i^{2k-2},…, x_i,1)$$
 Получаем определитель Вандермонда, что и требовалось.
 \end{proof}
 
@@ -195,8 +195,8 @@ $$G_1 - \prod \limits_{j>i}(b_j - b_i) \det(x_i^{2k-1}, x_i^{2k-2},…, x_i,1)$$
 
 \begin{proof}
 $$ \frac{1}{(x + \theta_{2i})^2} = \lim\limits_{\delta \rightarrow 0} \frac{1}{\delta}\left(\frac{1}{x+\theta_{2i}+\delta} - \frac{1}{x+\theta_{2i}}\right)$$
-$$\det F = \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{(x_i \theta_2)^2}, …, \frac{1}{x_i+\theta_{2k}}, \frac{1}{(x_i + \theta_{2k})^2} \right)_{i=1}^{2k}$$
-$$ \det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k} \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{x+\theta_{2i}+\delta} - \frac{1}{x+\theta_{2i}}, … \right)_{i=1}^{2k}$$
+$$\det F = \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{(x_i + \theta_2)^2}, …, \frac{1}{x_i+\theta_{2k}}, \frac{1}{(x_i + \theta_{2k})^2} \right)_{i=1}^{2k}$$
+$$ \det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k} \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{x+\theta_{2}+\delta} - \frac{1}{x+\theta_{2}}, … \right)_{i=1}^{2k}$$
 $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \frac{1}{x_i + b_j} \right)_{i,j=1}^{2k}$$
 Складываем соседние столбцы, применяем прошлую теорему и получаем требуемое.
 \end{proof}
@@ -204,7 +204,7 @@ $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \fr
 \subsection{Дифференцирование уравнения и его алгебраической формы}
 
 \begin{thm}
-Пусть $0 \leq x_1 < … < x_k$ — опорные точки локально $D$-оптимального плана для модели \eqref{simplRatModel}.  Тогда $x_1 = 0$.
+    Пусть $0 \leq x_1 < … < x_{2k}$ — опорные точки локально $D$-оптимального плана для модели \eqref{simplRatModel}.  Тогда $x_1 = 0$.
 \end{thm}
 \begin{proof}
 Рассмотрим формулу \eqref{detEquatin}. Если из всех $x_i$ вычесть некоторое $\delta \in (0, x_1)$, то числитель не изменится, а знаменатель уменьшится. Значит $x_1 = 0$, т.к. мы ищем оптимальный план, а если $x_1 >0$, то определитель можно увеличить.
@@ -213,15 +213,19 @@ $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \fr
 Итого, задачу поиска оптимального плана мы свели к поиску максимума следующей функции\footnote{здесь на один $x_i$ меньше}:
 \begin{equation}
 \label{targetEq}
-\frac{\prod\limits_{j>i}(x_j - x_i) \prod x_i}{\prod\limits_i\prod\limits_j (x_i + \theta_{2j})^2}
+\frac{\prod\limits_{2k\ge j>i\ge2}(x_j - x_i) \prod_{i=1}^{2k} x_i}{\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{2k} (x_i + \theta_{2j})^2}
 \end{equation}
 
 Обозначим многочлен $\prod\limits_{i=2}^{2k}(x-x_i)$ за $\psi(x)$, а коэффициенты многочлена будем обозначать за $\psi_0, …, \psi_{2k-1}$:
+<<<<<<< HEAD
 $$\psi(x) = \sum\limits_{i=0}^{2k-2}\psi_i x^{2k-i-1}, \psi_0 = 1$$
+=======
+$$\psi(x) = \sum\limits_{i=0}^{2k-1}\psi_i x^{2k-i-1}, \psi_0 = 1$$
+>>>>>>> cdd8364309a6ce499dca768e7a66755f92d83dc7
 
 Пусть в оптимальном плане $x_{2k} < d$\footnote{случай $x_{2k}=d$ рассматривается аналогично}. По необходимому условию экстремума частные производные   функции \eqref{targetEq} обращаются в ноль на оптимальном плане:
 $$ \frac{1}{x_i} + \sum\limits_{i\neq j} \frac{1}{x_j- x_i} - 2 \frac{Q'(x_i)}{Q(x_i)} = 0$$
-где $Q(x)= \prod(x+\theta_{2i}$ 
+где $Q(x)= \prod_{i=1}^k(x+\theta_{2i})$ 
 
 Воспользуемся следующим равенством\footnote{интересно, получается ли оно каким-нибудь естественным образом…}:
 $$\frac{1}{2} \sum\limits_{j\neq i}\frac{1}{x_i - x_j} = \frac{\psi''(x)}{\psi'(x)}|_{x=x_i}$$
