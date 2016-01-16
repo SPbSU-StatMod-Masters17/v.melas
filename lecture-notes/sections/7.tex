@@ -68,7 +68,7 @@ $$ \Gamma = \left\{ \gamma = \Tr{(\gamma_0, …, \gamma_p)}, \, \gamma_i = \sum 
 \begin{proof}
     Будем по порядку в этом убеждаться.
     Для начала ясно, что $\Gamma \subset \mathcal C$.\footnote{Прежде чем читать дальше, попробуйте доказать это сами.}
-    Любой элемент $\gamma \in \Gamma$ имеет вид $$\gamma = \sum_{j = 1}^{p + 2} \gamma_j \Tr{(u_0(t_j), u_1(t_j), \ldots, u_p(t_j))},$$ где
+    Любой элемент $\gamma \in \Gamma$ имеет вид $$\gamma = \sum_{j = 1}^{p + 2} \lambda_j \Tr{(u_0(t_j), u_1(t_j), \ldots, u_p(t_j))},$$ где
     $\Tr{(u_0(t_j), u_1(t_j), \ldots, u_p(t_j))} \in C_{p + 1}$. Причем в силу того, что $\mathcal C$ выпуклое множество
     $$\sum_{j=1}^{n + 2} \frac{\lambda_j}{\sum_k \lambda_k} \Tr{(u_0(t_j), u_1(t_j), \ldots, u_p(t_j))} \in \mathcal C.$$
     Но $\mathcal C$ является конусом, а значит можно домножить на $\sum_k \lambda_k$.
@@ -116,15 +116,16 @@ c = \sum \limits_{i=1}^{k} \lambda_i u(t_i)
 \end{dfn}
 
 \begin{thm}
-Ненулевой $\tilde{c} \in \mathcal{M}_{p+1}$ является граничной точкой тогда и только тогда, когда $I(\tilde{c}) < (p+1)/2$. Кроме того, граничная точка $\tilde{c}$ допускает единственное представление
-$$\tilde{c} = \sum\limits_{i=1}^{k}\lambda_i u(t_i), \text{ где } k \leq \frac{p+2}{2}, \, \lambda_i > 0$$
+    Ненулевой $\tilde{c} \in \mathcal{M}_{p+1}$ является граничной точкой тогда и только тогда, когда $I(\tilde{c}) \le (p+1)/2$\footnote{\color{blue} ANDY UPD.}. Кроме того, граничная точка $\tilde{c}$ допускает единственное представление
+    $$\tilde{c} = \sum\limits_{i=1}^{k}\lambda_i u(t_i), \text{ где } k \le \frac{p+1}{2}, \, \lambda_i > 0$$
+    \footnote{\color{blue} Тут тоже UPD. Нужно проверять.}
 \end{thm}
 
 Пусть ненулевая точка $\tilde c$ является граничной точкой множества $\mathcal M_{p + 1}$. Известно, что тогда существует опорная гиперплоскость к $\mathcal M_{p + 1}$ в точке $\tilde c$,
 которая задается вектором $\{a_i\}_{i = 0}^d$ и $d$, причем $\sum_{i=0}^p a_i^2 > 0$.\footnote{\color{blue} Этот момент я сам точно не понимаю.}
 Причем как всегда
 $$ \sum_{i=0}^p a_i c_i + d \ge 0,$$ где $c \in \mathcal M_{n + 1}$ и $\sum_{i=0}^n a_i \tilde c_i + d = 0$.
-Покажем, что $d = 0$. Во-первых, ясно, что $d \ge 0$, так как $0 \in \mathcal M_{n + 1}$. Если же $\lambda > 0$, то $\sum a_i \tilde c_i < 0$
+Покажем, что $d = 0$. Во-первых, ясно, что $d \ge 0$, так как $0 \in \mathcal M_{n + 1}$. Если же $d > 0$, то $\sum a_i \tilde c_i < 0$
 и тогда для достаточно больших $\lambda$ будет справедливо неравенство $\lambda \sum a_i \tilde c_i + d < 0$\footnote{Здесь мы воспользовались тем, что $\mathcal M_{p + 1}$ --- конус}. Противоречие.
 
 А значит
