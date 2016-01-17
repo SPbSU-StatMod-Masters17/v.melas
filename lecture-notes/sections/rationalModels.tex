@@ -189,7 +189,7 @@ $$G_1 - \prod \limits_{j>i}(b_i - b_j) \det(x_i^{2k-1}, x_i^{2k-2},…, x_i,1)$$
 \begin{thm}
 \begin{equation}
 \label{detEquatin}
-\det F = \frac{\prod\limits_{j>i}(\theta_{2i}-\theta_{2j})\prod\limits_{j>i}(x_j - x_i)}{\prod\limits_i\prod\limits_j (x_i + \theta_{2j})^2}
+\det F = \frac{\prod\limits_{j>i}(\theta_{2i}-\theta_{2j})\prod\limits_{j>i}(x_j - x_i)}{\prod\limits_i\prod\limits_j (x_i + \theta_{2j})^2}.
 \end{equation}
 \end{thm}
 
@@ -213,27 +213,27 @@ $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \fr
 Итого, задачу поиска оптимального плана мы свели к поиску максимума следующей функции\footnote{здесь на один $x_i$ меньше}:
 \begin{equation}
 \label{targetEq}
-\frac{\prod\limits_{2k\ge j>i\ge2}(x_j - x_i) \prod_{i=1}^{2k} x_i}{\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{2k} (x_i + \theta_{2j})^2}
+\frac{\prod\limits_{2k\ge j>i\ge2}(x_j - x_i) \prod_{i=1}^{2k} x_i}{\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{k} (x_i + \theta_{2j})^2}
 \end{equation}
 
 Обозначим многочлен $\prod\limits_{i=2}^{2k}(x-x_i)$ за $\psi(x)$, а коэффициенты многочлена будем обозначать за $\psi_0, …, \psi_{2k-1}$:
-$$\psi(x) = \sum\limits_{i=0}^{2k-2}\psi_i x^{2k-i-1}, \psi_0 = 1$$
+$$\psi(x) = \sum\limits_{i=0}^{2k-1}\psi_i x^{2k-i-1}, \psi_0 = 1$$
 
 Пусть в оптимальном плане $x_{2k} < d$\footnote{случай $x_{2k}=d$ рассматривается аналогично}. По необходимому условию экстремума частные производные   функции \eqref{targetEq} обращаются в ноль на оптимальном плане:
-$$ \frac{1}{x_i} + \sum\limits_{i\neq j} \frac{1}{x_j- x_i} - 2 \frac{Q'(x_i)}{Q(x_i)} = 0$$
+$$ \frac{1}{x_i} + \sum\limits_{i\neq j} \frac{1}{x_i- x_j} - 2 \frac{Q'(x_i)}{Q(x_i)} = 0$$
 где $Q(x)= \prod_{i=1}^k(x+\theta_{2i})$ 
 
 Воспользуемся следующим равенством\footnote{интересно, получается ли оно каким-нибудь естественным образом…}:
-$$\frac{1}{2} \sum\limits_{j\neq i}\frac{1}{x_i - x_j} = \frac{\psi''(x)}{\psi'(x)}|_{x=x_i}$$
-Умножим предпоследнее неравенство на $\Psi'(x) x Q(x)$ и получим:
-$$ h(x) = \Psi''(x) xQ(x) + 2 \Psi'(x)\left(Q(x) - 2xQ'(x)\right)$$
+$$\sum\limits_{i\neq j}\frac{1}{x_i - x_j} = \frac{\psi''(x)}{\psi'(x)}|_{x=x_i}.$$
+Умножим предпоследнее неравенство на $\psi'(x) x Q(x)$ и получим:
+$$ h(x) = \psi''(x) xQ(x) + \psi'(x)\left(Q(x) - 2xQ'(x)\right)$$
 Многочлен $h(x)$ обращатся в ноль в точках $x_2…x_{2k}$. Следовательно, этот многочлен имеет вид $\psi(x)\lambda(x)$. Его нули содержат нули $\psi(x)$, а т.к. это многочлен, то оставшиеся нули содержатся в многочлене $\lambda(x)$, имеющем вид:
 $$ \lambda(x) = \sum\limits_{i=0}^{k-1}\lambda_ix^i$$
 Степень $h(x)$ легко считается: $(2k-4) + k + 1 = 3k-3$, $3k-3 - (2k-2) = k -1$.
 В итоге получили уравнение:
 \begin{equation}
 \label{targetEq2}
-\psi''(x)xQ(x) + 2 \psi'(x)\left(Q(x) - xQ'(x)\right) = \lambda(x)\psi(x)
+\psi''(x)xQ(x) + \psi'(x)\left(Q(x) - 2xQ'(x)\right) = \lambda(x)\psi(x)
 \end{equation}
 
 \begin{thm}
