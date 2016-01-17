@@ -14,7 +14,7 @@
 \begin{enumerate}
 \item При всех $\theta \in \Theta$ дробь \eqref{rationalModel} не сократима. 
 \item Знаменатель дроби не обращается в ноль на множестве значений $x$. Будем считать, что $x \in [0,d]$. 
-\item $d_2 \geq d_1 - 1$
+\item $d_1 > d_2$
 \end{enumerate}
 
 
@@ -39,10 +39,10 @@ x_2 + b & 1 \\
 \end{pmatrix}
 \end{equation}
 \begin{equation*}
-\det … \sim \frac{x_2 - x_1}{(x_1+b)^2(x_2+b)^2} (x_1 < x_2)
+\det … \sim \frac{x_1 - x_2}{(x_1+b)^2(x_2+b)^2} (x_2 < x_1)
 \end{equation*}
 
-$\sim$ в последнем равенстве означает, что нам достаточно максимизировать данное выражение (мы предполагаем, что $x_1 < x_2$). Пусть $x_1 \neq 0$. Тогда сдвинув на $x_1$ $x_2$ и $x_1$ числитель не поменяется, а знаменатель уменьшится. Значит $x_1 = 0$. Остается решить тривиальную задачу одномерной максимизации\footnote{надеюсь все с этим могут справиться. Можно чуть упростить жизнь, взяв логарифмы.} и получить, что $x_2 = b$.
+$\sim$ в последнем равенстве означает, что нам достаточно максимизировать данное выражение (мы предполагаем, что $x_2 < x_1$). Пусть $x_1 \neq 0$. Тогда сдвинув на $x_1$ $x_2$ и $x_1$ числитель не поменяется, а знаменатель уменьшится. Значит $x_1 = 0$. Остается решить тривиальную задачу одномерной максимизации\footnote{надеюсь все с этим могут справиться. Можно чуть упростить жизнь, взяв логарифмы.} и получить, что $x_2 = b$.
 Отлично, оптимальный план найден.
 
 \end{ex}
@@ -87,16 +87,17 @@ $$x = \frac{bd}{2b + d}$$
 
 \subsection{Вид определителя информационной матрицы}
 
+Считаем производные регрессии по параметрам.
 \begin{align}
-f_i(x) &= \frac{x^{i-1}}{Q(x)}, i =1 … d_2 \\
-f_{j}(x) &= \frac{x^{j-1}}{Q(x)^2}P(x), j = 1…(d_1-1)
+f_i(x) &= \frac{x^{i-1}}{Q(x)}, i =1 … d_2; \\
+f_{k + j}(x) &= \frac{x^{j-1}}{Q(x)^2}P(x), j = 1…(d_1-1);
 \end{align}
 
-Пусть $F = \Tr{(f_1, …, f_{2k})}$. Тогда 
+Пусть $F = \Tr{(f_1, …, f_{2k})}$. Тогда
 \begin{thm}
 \begin{equation}
 \label{rationModelDet}
-\det F = \frac{\prod\limits_{i<j} (x_j - x_i)}{\prod\limits_{i} Q^2(x_i)}
+\det F = \frac{\prod\limits_{i<j} (x_j - x_i)}{\prod\limits_{i} Q^2(x_i)}.
 \end{equation}
 \end{thm}
 \begin{proof}
@@ -189,12 +190,12 @@ $$G_1 - \prod \limits_{j>i}(b_i - b_j) \det(x_i^{2k-1}, x_i^{2k-2},…, x_i,1)$$
 \begin{thm}
 \begin{equation}
 \label{detEquatin}
-\det F = \frac{\prod\limits_{j>i}(\theta_{2i}-\theta_{2j})\prod\limits_{j>i}(x_j - x_i)}{\prod\limits_i\prod\limits_j (x_i + \theta_{2j})^2}
+\det F = \frac{\prod\limits_{j>i}(\theta_{2i}-\theta_{2j})\prod\limits_{j>i}(x_j - x_i)}{\prod\limits_i\prod\limits_j (x_i + \theta_{2j})^2}.
 \end{equation}
 \end{thm}
 
 \begin{proof}
-$$ \frac{1}{(x + \theta_{2i})^2} = \lim\limits_{\delta \rightarrow 0} \frac{1}{\delta}\left(\frac{1}{x+\theta_{2i}+\delta} - \frac{1}{x+\theta_{2i}}\right)$$
+$$ \frac{1}{(x + \theta_{2i})^2} = -\lim\limits_{\delta \rightarrow 0} \frac{1}{\delta}\left(\frac{1}{x+\theta_{2i}+\delta} - \frac{1}{x+\theta_{2i}}\right)$$
 $$\det F = \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{(x_i + \theta_2)^2}, …, \frac{1}{x_i+\theta_{2k}}, \frac{1}{(x_i + \theta_{2k})^2} \right)_{i=1}^{2k}$$
 $$ \det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k} \det \left(\frac{1}{x_i + \theta_2}, \frac{1}{x+\theta_{2}+\delta} - \frac{1}{x+\theta_{2}}, … \right)_{i=1}^{2k}$$
 $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \frac{1}{x_i + b_j} \right)_{i,j=1}^{2k}$$
@@ -213,27 +214,27 @@ $$\det F = \lim \limits_{\delta \rightarrow 0} \frac{1}{\delta^k}\det \left( \fr
 Итого, задачу поиска оптимального плана мы свели к поиску максимума следующей функции\footnote{здесь на один $x_i$ меньше}:
 \begin{equation}
 \label{targetEq}
-\frac{\prod\limits_{2k\ge j>i\ge2}(x_j - x_i) \prod_{i=1}^{2k} x_i}{\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{2k} (x_i + \theta_{2j})^2}
+\frac{\prod\limits_{2k\ge j>i\ge2}(x_j - x_i) \prod_{i=2}^{2k} x_i}{\prod\limits_{i=1}^{2k}\prod\limits_{j=1}^{k} (x_i + \theta_{2j})^2}
 \end{equation}
 
 Обозначим многочлен $\prod\limits_{i=2}^{2k}(x-x_i)$ за $\psi(x)$, а коэффициенты многочлена будем обозначать за $\psi_0, …, \psi_{2k-1}$:
-$$\psi(x) = \sum\limits_{i=0}^{2k-2}\psi_i x^{2k-i-1}, \psi_0 = 1$$
+$$\psi(x) = \sum\limits_{i=0}^{2k-1}\psi_i x^{2k-i-1}, \psi_0 = 1$$
 
 Пусть в оптимальном плане $x_{2k} < d$\footnote{случай $x_{2k}=d$ рассматривается аналогично}. По необходимому условию экстремума частные производные   функции \eqref{targetEq} обращаются в ноль на оптимальном плане:
-$$ \frac{1}{x_i} + \sum\limits_{i\neq j} \frac{1}{x_j- x_i} - 2 \frac{Q'(x_i)}{Q(x_i)} = 0$$
+$$ \frac{1}{x_i} + \sum\limits_{i\neq j} \frac{1}{x_i- x_j} - 2 \frac{Q'(x_i)}{Q(x_i)} = 0$$
 где $Q(x)= \prod_{i=1}^k(x+\theta_{2i})$ 
 
 Воспользуемся следующим равенством\footnote{интересно, получается ли оно каким-нибудь естественным образом…}:
-$$\frac{1}{2} \sum\limits_{j\neq i}\frac{1}{x_i - x_j} = \frac{\psi''(x)}{\psi'(x)}|_{x=x_i}$$
-Умножим предпоследнее неравенство на $\Psi'(x) x Q(x)$ и получим:
-$$ h(x) = \Psi''(x) xQ(x) + 2 \Psi'(x)\left(Q(x) - 2xQ'(x)\right)$$
+$$\sum\limits_{i\neq j}\frac{1}{x_i - x_j} = \frac{\psi''(x)}{\psi'(x)}|_{x=x_i}.$$
+Умножим предпоследнее равенство на $\psi'(x) x Q(x)$ и получим:
+$$ h(x) = \psi''(x) xQ(x) + \psi'(x)\left(Q(x) - 2xQ'(x)\right)$$
 Многочлен $h(x)$ обращатся в ноль в точках $x_2…x_{2k}$. Следовательно, этот многочлен имеет вид $\psi(x)\lambda(x)$. Его нули содержат нули $\psi(x)$, а т.к. это многочлен, то оставшиеся нули содержатся в многочлене $\lambda(x)$, имеющем вид:
 $$ \lambda(x) = \sum\limits_{i=0}^{k-1}\lambda_ix^i$$
-Степень $h(x)$ легко считается: $(2k-4) + k + 1 = 3k-3$, $3k-3 - (2k-2) = k -1$.
+Степень $h(x)$ легко считается $3k-2$, а степень $\lambda(x)$ равна $3k-2 - (2k-1) = k -1$.
 В итоге получили уравнение:
 \begin{equation}
 \label{targetEq2}
-\psi''(x)xQ(x) + 2 \psi'(x)\left(Q(x) - xQ'(x)\right) = \lambda(x)\psi(x)
+    \psi''(x)xQ(x) + \psi'(x)\left(Q(x) - 2xQ'(x)\right) = \lambda(x)\psi(x)
 \end{equation}
 
 \begin{thm}
@@ -248,7 +249,7 @@ $$ \sum a_{ij} x^{n+1-i} = (n+1-j)x^{n-j}, j=1…n$$
 Значит $a_{i,i-1} = n+2-i$ для $i=2…n+1$, а остальные $a_{ij} = 0$.
 \end{proof}
 \begin{thm}
-Пусть $\phi(x) = \Tr{(x^n, x^{n-1},…,1)}$. Существует матрица $A_1$ такая, что 
+Пусть $\phi(x) = \Tr{(x^n, x^{n-1},…,1)}$. Существует матрица $A_2$ такая, что 
 \begin{equation}
 \label{derEq2}
 \Tr{\phi(x)}A_2 = \Tr{(\phi''(x))}
@@ -263,7 +264,8 @@ $$\Tr{\tilde{\phi}(x)}C_\lambda = \lambda(x) \Tr{\phi(x)}, \text{ где}$$
 $$\phi(x) = \Tr{(x^n, x^{n-1},…,1)}$$
 Доказывается аналогично леммам и получается, что:
 $$ C_\lambda = \sum\limits_{i=0}^{s} \lambda_i E_i, \text{ где }$$
-$$\Tr{E_0} = (I_{n+1}O_s), \Tr{E_s}=(0_1I_{n+1})_{s-1}), …,\Tr{E_s}=(0_sI_{n+1})$$ 
+$$\Tr{E_0} = (I_{n+1}0_s), \Tr{E_s}=(0_1I_{n+1})0_{s-1}), …,\Tr{E_s}=(0_sI_{n+1}),$$ 
+где $I_{n + 1}$ --- единичная матрица размеров $n + 1$, а $0_j$ --- нулевая матрица размеров $(n + 1) \times j$.
 
 После введенных обозначений \eqref{targetEq2} можно записать в форме:
 \begin{equation}
