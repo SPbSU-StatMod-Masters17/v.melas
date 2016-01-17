@@ -69,7 +69,52 @@ xi^{*}(\lambda) = \argmax\limits{xi} \det M(\xi, \lambda)
 где $\alpha = \max\limits_{i}(\lambda_i - d )^2$, $d$ произвольное вещественное число, $\frac{o(\alpha}{\alpha} \rightarrow 0$ при $\alpha \rightarrow 0$.
 \end{lem}
 \begin{proof}
-Написать док-во
+Начнем с разложения следующей функции: $J(\theta) = \det || \exp(-\theta_i x_j)||_{i,j = 1}^{m}$. Разложим экспоненту в ряд:
+$$ m_{ij} = \exp(-\theta_i x_j) = \sum\limits_{s=0}^{m+1} (-1)^{s}\frac{\theta_i x_j^{s}}{s!} + o((\theta_i x_j)^{m+1})$$ 
+Заметим, что эта сумма — произведение двух векторов
+$$m_{ij} = \Tr(1, \theta_i, \theta_i^2, …, \theta_i^{m+1}) \begin{pmatrix} (-1)^{0}\frac{x_j^0}{0!} \\ (-1)^{1}\frac{x_j^1}{1!} \\ … \\(-1)^{m+1}\frac{x_j^{m+1}}{(m+1)!} \end{pmatrix} $$
+
+Таким образом, мы можем разложить экспоненты в $J$ в ряд и представить определитель как определитель произведения матриц $\det AB$, где $AB$ такие матрицы, что элементы их произведения равны $m_{ij}$. Определитель такого произведения можно вычислить с помощью формулы Бине-Коши и получить\footnote{Концептуально сложно ничего нету, элементарные (≠простые) вычисления.}:
+\begin{equation}
+\begin{split}
+&\det ||\exp (-\theta_i x_j)|| = \frac{(-1)^{[m/2]} }{2!…(m-1)!}\det ||x_j^{s-1}||_{j,s = 1}^m \det ||\theta_{i}^{s-1}||_{i,s=1}^{m} + \\
+& \frac{(-1)^{1+[m/2]} } {2!…(m-2)!(m)!}  \det||x_j^{s-1}||_{j=1…m, s = 1,…m-1, m+1}\det||\theta_{i}^{s-1}||_{i=1,…,m, s=1,…{m-1},m+1} + \\ 
+& \frac{(-1)^{[m/2]} } {2!…(m-2)!(m+1)!}  \det||x_j^{s-1}||_{j=1…m, s = 1,…m-1, m+2}\det||\theta_{i}^{s-1}||_{i=1,…,m, s=1,…{m-1},m+2} +\\
+& \frac{(-1)^{[m/2]} } {2!…(m-3)!(m-1)!(m)!}  \det||x_j^{s-1}||_{j=1…m, s = 1,…m-2, m+1}\det||\theta_{i}^{s-1}||_{i=1,…,m, s=1,…{m-2},m+1} +\\
+&o\left( \max \limits_{r = 1…m}\theta_{r}^{\frac{(m+1)m}{2} + 1}\right)
+\end{split}
+\end{equation}
+Входящие в эту сумму определитель можно вычислить явно:
+Первый из них является определителем Вандермонда и равен:
+$$\det ||x_j^{s-1}||_{j,s=1}^{m} = \prod \limits_{m \geq i > j \geq 1} (x_i - x_j)$$
+Аналогично
+$$\det ||\theta_j^{s-1}||_{j,s=1}^{m} = \prod \limits_{m \geq i > j \geq 1} (\theta_i - \theta_j)$$
+
+Далее 
+$\det ||x_j^{s-1}||_{j=1…m,s=1…m-1,m+1}$
+является минором определителя 
+$\det ||x_j^{s-1}||_{j,s = 1}^{m+1}$
+Который, в свою очередь, можно разложить по соответствующей строке и получить
+$$\det ||x_j^{s-1}||_{j,s = 1}^{m+1} = \sum\limits_{j=1}^{m+1} (-1)^{j+m} x_j^{m-1} \det ||x_i^{s-1}||_{i, s \in 1…m+1, i \neq j, s \neq m} = \prod\limits_{m+1 \geq i > j \geq 1}\left(x_i - x_j\right)$$
+Приравняв коэффициенты при $x_{m+1}^{m-1}$ получим, что\footnote{Убедитесь в этом. Это как раз не сложно.}
+$$\det ||x_j^{s-1}||_{j=1…m,s=1…m-1,m+1} = \sum\limits_{i=1}^{m}x_i \prod \limits_{m \geq i > j \geq 1}(x_i - x-j)$$
+Аналогично , разложив определитель по двум строчкам, получим
+$$\det ||x_j^{s-1}||_{j=1…m, s=1…m-1, m+2} = \left(\left(\sum\limits_{i=1}^m x_i\right)^2 + \sum\limits_{i\neq j}x_ix_j\right) \prod \limits_{m \geq i > j \geq 1}(x_i - x_j)$$
+Воспользуемся формулой
+$$2\sum\limits_{i\neq j} x_i x_j = \left(\sum x_i \right)^2 - \sum x_i^2, $$
+подставим значения определителей и получим следующую формулу:
+\begin{equation}
+\label{determinantDecomposition}
+\begin{split}
+&J(\theta) = \prod \limits_{m \geq i >  j \geq 1}(x_j - x_i)(\theta_i - \theta_j) \frac{1-\sum\limits_{i=1}^{m}x_i\sum\limits_{j=1}^m\frac{\theta_j}{m}}{2!…(m-1)!} + \\
+&\frac{1}{2} = \sum\limits_{i=1}^{m}(\theta_i^2)\frac{(m-1)\sum x_i^2 - 2\sum\limits_{i\neq j} x_i x_j}{m(m-1)(m+1)} + \\
+& \frac{1}{2} (\sum \limits_{i=1}^{m}\theta_i^2) \frac{(m-1) \sum x_i^2 + 2m \sum\limits_{i \neq j} (x_i x_j)}{m(m-1)(m+1)}+ \\
+& o(\max_{r} \theta_r^2)
+\end{split}
+\end{equation}
+Теперь $M(\xi, \lambda) = \lim\limits_{\delta \rightarrow 0}\frac{J(\tilde{\lambda})}{\delta^k}$, где 
+$\tilde{\lambda} = (\lambda_1, \lambda_1 + \delta, … , \lambda_k, \lambda_k + \delta$\footnote{В материале про рациональные модели аналогичный факт расписан более подробно, можно посмотреть там}.
+Поэтому, взяв $m = 2k$ и $\theta = \tilde{\lambda}$ получаем утверждение леммы.
 \end{proof}
 
 Теперь докажем следующую вспомогательную лемму
@@ -92,7 +137,7 @@ xi^{*}(\lambda) = \argmax\limits{xi} \det M(\xi, \lambda)
 \begin{proof}
 Первое утверждение следует из предыдущей леммы.
 
-Написать док-во второго утверждения
+Второе утверждение — технические выкладки, аналогичные предыдущей лемме. Расскладываем для $\lambda = (\lambda_1, …, \lambda_{j-1}, d, …, d, \lambda_{j+s}, …,\lambda_{k})$ определитель на сумму произведения пар определителей с $(\lambda_1, …, \lambda_{j-1},  \lambda_{j+s}, …,\lambda_{k})$ и $(d, …, d)$. Далее определители с $(d, …, d)$ расскладываем аналогично лемме и получаем, что они непрерывны. У оставшихся слагаемых также не будет проблем с непрерывностью и предельным переходом доопределяем $\tilde{M}(\xi, \lambda)$.
 \end{proof}
 
 
@@ -105,7 +150,7 @@ $$\tilde{\xi}^{*}(\lambda) = \max\limits_{\xi}\tilde{M}(\xi, \lambda)$$
 \end{dfn}
 Заметим, что оптимальная план-функция при любом фиксированном $\lambda \in \Lambda$  задает насыщенный локально $D$-оптимальный план. Как мы покажем далее, эта функция является единственной и локально $D$-оптимальный план определен единственным образом.
 
-Далее из док-ва леммы следует, что 
+Можно показать\footnote{без док-ва, можно посмотреть в статье в сборнике (доказывается, что $\frac{\partial}{\partial x_1} \det ||\exp(-x_i\theta_j)||_{i,j=1}^m < 0$)}, что 
 $$\frac{\partial}{\partial x_1} \tilde{M}(\xi, \lambda) \leq 0$$
 А значит точка $x_1 > 0$ не может быть точкой локального экстремума функции $\tilde{M}(\xi, \lambda)$, а значит $x_1^{*}(\lambda) = 0$. 
 
@@ -135,8 +180,75 @@ $\xi(\lambda_d) = (0, \gamma_2, …, \gamma_{2k})$, где $\gamma_i = \frac{2\g
 \begin{thm}
 Матрица $\{ \frac{\partial^2}{\partial x_i \partial x_j} \tilde{M}(\xi^{*}(\lambda), \lambda)\}$, где $\xi^{*}$ удовлетворяет \eqref{functionalExpModel}, а  $\lambda \in \Lambda$ является отрицательно определенной.
 \end{thm}
+
 \begin{proof}
-написать док-во
+Будем считать, что $\xi^{*}$ имеет вид $(x_1, …, x_{2k})$, $0 \leq x_1 < … < x_{2k}$.  Для начала докажем, что если 
+$\frac{\partial}{\partial x_i} \tilde{M}(\xi,\lambda)=0$ для некоторого фиксированного $i=2…2k$, то 
+$$\frac{\partial^2}{\partial x_i^2} \tilde{M}(\xi, \lambda) < 0$$
+Не умаляя общности считаем, что $i=2$. 
+Положим $g(z) = \frac{\partial}{\partial z}\tilde{M}(x_1,z, x_2, …, x_{2k}, \lambda)$. 
+
+{\color{red} тут ошибки с индексами. надо все аккуратно проверить и переписать. }
+Далее $\tilde{g}(z) = \tilde{M}(x_1,z, x+2 …, x_{2k}, \lambda)$ обращается в ноль в точках $x_1, x_3, …, …, x_{2k}$. 
+Из того, что $\tilde{g(z)}$\footnote{это определитель неотрицательно-определенной матрицы} больше нуля получаем, что $g(z)$ равно нулю на интервалах\footnote{Между корнями непрерывной функции есть корень производной}$(x_1, x_2)$, $(x_{3}, x_{4})$, $(x_{4}, x_{5})$, …,$(x_{2k}, \infty)$ 
+, а также $g(x_i) = 0$. Утверждение про корень на $(x_{2k}, \infty)$ следует из того, что $\tilde{g}(z) \rightarrow 0$ на бесконечности.
+ В тоже время, разложим $\tilde{M}$ по столбцу\footnote{или по строчке, если я строчки и столбцы перепутал} можно получить, что 
+$$g(z) = \sum_{i=1}^k a_i \exp(-\lambda_i z) + b_i z \exp(-\lambda_i z)$$
+Значит $g(z)$ является обобщенным многочленном и по свойству систем чебышева\footnote{экспоненциальная система, как все помнят, к ним относится} получаем, что $g(z)$ имеет не более $2k-1$ нуля с учетом кратности.  Следовательно $x_i$ не может быть нулем кратности 2 и более. Далее $\tilde{g}(z)$ обращается в ноль при $z=x_{i-1}, x_{i+1}$, а внутри интервала строго больше нуля. Значит $g(z)$ имеет единственный нуль при $z \in (x_{i-1}, x_{i+1}$. Следовательно $x_i$ есть точка локального максимума функции $\tilde{g}$ и 
+$$\frac{\partial^2}{\partial x_i^2}\tilde{M}(\xi, \lambda) < 0$$
+
+Теперь если $\xi, \lambda$ таковы, что 
+$$\frac{\partial}{\partial x_i} \tilde{M}(\xi, \lambda) = 0$$
+при некотором фиксированом $i=2…2k$, то
+$$\frac{\partial^2}{\partial x_i x_j} \tilde{M}(\xi, \lambda) > 0 $$
+при любом $i \neq j$. 
+
+Не умаляя общности считаем, что $i=2, j=3$. Тогда  
+Положим $g(z) = \frac{\partial}{\partial x_i}\tilde{M}(x_1,x_2, z, x_2,…, \lambda)$. $g(x_i)=0$ при $i \neq 2$, т.к. в определителе будут две совпадающие строчки. По условию $g(x_j) = 0$. 
+
+Далее при $z \rightarrow \infty$ $g(z)$ стремится к нулю (один из столбцов стремится к нулю). 
+ Получаем, что $g'(z)$ обращается в ноль на интервалах $(x_1, x_2), (x_3, x_4), …, (x_{2k-1}, x_{2k}), (x_{2k}, \infty)$. 
+ Аналогично предыдущему получаем, что $g'(x_l)$ обращается в нуль на $(x_1, x_2)$, $(x_3, x4)$,…,$(x_{2k}, +\infty)$. 
+ По чебышевскому свойству получаем (после подсчета нулей), что $g'(x_j) \neq 0$. 
+Далее можно показать что 
+$$\text{sgn} g'(z)|_{z = x_j} = \text{sgn} g(x_j) (-1)^{j-i+1}j$$
+где $h = 1$ если $j<i$ и $-1$ иначе.
+Плюс 
+$$hg(x_j)(-1)^{j-i+1} = \lim\limits_{\delta\rightarrow 0}\frac{\tilde{M}(x_1, …, x_i, x_i + \delta, x_{i+1}, …, x_{j-1}, x_{j+1}, …, x_{2k}, \lambda)}{\delta}$$
+Можно показать, что $\tilde{M}(\xi_\delta, \lambda) > 0$ при $\delta\in(0, x_{i+1}-x_{i}$, следовательно $g'(x_j) \geq 0$. За счет того, что $g'(x_j) \neq 0$ получаем, что 
+$$\frac{\partial^2}{\partial x_i \partial x_j} \tilde{M}(\xi, \lambda) = g'(x_j) > 0$$
+
+{\color{red} в общем идея в предыдущем понятная, но с индексами беда. + кажется ошибки в статье с обозначениями.}
+
+Теперь докажем следующее тождество:
+\begin{equation}
+\sum \limits_{i=1}^{2k} \frac{\partial }{\partial x_i} \tilde{M}(\xi, \lambda) = -2 (\sum \lambda_i)\tilde{M}(\xi, \lambda)
+\end{equation}
+\begin{equation}
+\begin{split}
+&\det||e^{-\lambda_1(x_i+\delta), (x_i+\delta)e^{-\lambda_1+\delta}, …, e^{-\lambda_k(x_i+\delta)}, (x_i+\delta)e^{-\lambda_k(x_i+\delta)}}||_{i=1}^{2k} = \\
+&\exp\left(-2\sum\lambda_i \delta\right) \det||e^{-\lambda_1 x_i}, x_ie^{-\lambda_1 x_i}, …, e^{-\lambda_k x_i},x_ie^{-\lambda_kx_i}||\\ 
+\end{split}
+\end{equation}
+Продиффиренцируем последнее равенство по $\delta$ и воспользуемся тем, что 
+$$ 
+ \frac{\partial}{\partial \delta} \tilde{M}(\xi_\delta, \lambda)  = \sum \frac{\partial}{\partial x_i} \tilde{M}(\xi_\delta, \lambda)$$
+ получим требуемое.
+
+Воспользовавшися доказанным тождеством получаем, что для любого $\lambda$
+$$ \frac{\partial}{\partial{x_j}} \sum\limits_{i=1}^{2k} \frac{\partial}{\partial x_i}\tilde{M}(\xi^{*}(\lambda), \lambda) = -2 (\sum\lambda_i)\frac{\partial}{\partial x_j}\tilde{M}(\xi^{*}(\lambda), \lambda)$$
+где $\xi^{*}$ — любое оптимальная план-функция (решение уравнения, задающего неявную функцию).
+
+В итоге в $(\xi^{*}, \lambda)$ имеем 
+$$\sum\limits_{\substack{i=1…2k \\ i \neq j}}   | \frac{\partial^2}{\partial x_i \partial x_j} \tilde{M}| = \sum \frac{\partial^2}{\partial x_i \partial x_j} \tilde{M} = -\frac{\partial^2}{\partial x_j^2} \tilde{M}$$  
+Далее
+$$ \sum\limits_{i =2 …2k, i \neq j} | \frac{\partial^2}{\partial x_i \partial x_j} \tilde{M}| < |\frac{\partial ^2 }{\partial x_j^2}\tilde{M}| \leq
+|\frac{\partial ^2 }{\partial x_j^2}\tilde{M} - \mu|$$
+где $\mu \geq 0$.
+Отсюда по критерию Адамара $\det (P - \mu I) \neq 0$
+где $P = \{  \frac{\partial^2}{\partial x_i \partial x_j} \tilde{M} \}_{i,j=2}^{2k}$. 
+Матрица $P$ симметричная, поэтому все собственные числа вещественны и  из произвольности $\mu$ они все должны быть отрицательными (иначе выберем такое $\mu$, что определитель равен нулю. Получим противоречие критерию Адамара)
+Кроме того $P^{-1}$ состоит из отрицательных элементов.
 \end{proof}
 
 Благодаря этой теореме мы можем применить теорему о неявной функции. 
@@ -152,6 +264,9 @@ $$\xi^{*} = \xi^{*}(\lambda) \Leftrightarrow \frac{\partial}{\partial x_i}\tilde
 \begin{lem}
 Пусть $W$ — окрестность точки, в которой определена $\xi^{*}(\lambda)$. Тогда $x_{i}^{*}(\lambda)$ для $i=2…2k$ строго-моннотоно убывает по каждому $\lambda_{j}$ ($\lambda \in W$).
 \end{lem}
+\begin{proof}
+Без док-ва\footnote{Для док-ва надо получить, что $\frac{\partial^2}{\parital\lambda_i\partial x_j}\tilde{M}} > 0$ и воспользоваться тем, что элементы $P^{-1}$ из теоремы о структуре матрицы Якоби будут отрицательными.}
+\end{proof}
 
 { \color{blue} тут надо доказать факт про то, что функцию $\xi^{*}(\lambda)$ можно доопределить на множестве $\Lambda_{\lambda'} = \{\lambda \in \R^k | \lambda_i \geq \lambda' \}$, если $\xi^{*}$ была изначально задана в окрестности $\lambda'$ }
 \begin{lem}
