@@ -240,33 +240,37 @@ $g(\tau_{(0)},z_{(0)})=0$.
      $$
      В самом деле, по определению производной и в силу формулы
      дифференцирования сложной функции, имеем \begin{align}
-     &&\frac{\partial}{\partial z} g(\tau(z),z)=\lim_{\Delta\to 0}
+     &\frac{\partial}{\partial z} g(\tau(z),z)=\lim_{\Delta\to 0}
      \frac{g(\tau(z+\Delta),z+\Delta)-g(\tau(z),z)}{\Delta} = \nonumber\\
-         &&=\frac{\partial}{\partial \tau} g(\tau,z)|_{\tau=\tau(z)}
+         &=\frac{\partial}{\partial \tau} g(\tau,z)|_{\tau=\tau(z)}
          \tau^{'}(z)+ \frac{\partial}{\partial z} g(\tau,z)|_{\tau=\tau(z)}.
-         \nonumber \end{align}
+         \nonumber\end{align}
 
-         Используя это равенство, получим \begin{align} &&\frac{\partial^n}{\partial
+         Используя это равенство, получим \begin{align} 
+         &\frac{\partial^n}{\partial
              z^n} g(\tau(z),z)= \frac{\partial}{\partial \tau}g(\tau(z),z)
     \tau^{(n)}(z) +
     \frac{\partial^n}{\partial z^n} g(\tau,z)|_{\tau=\tau(z)}+\nonumber \\
-        &&+\sum^m_{i,j=1}\frac{\partial^2}{\partial\tau_i\partial\tau_j}
+        &+\sum^m_{i,j=1}\frac{\partial^2}{\partial\tau_i\partial\tau_j}
         g\left(\tau(z),z\right)\sum^{n-1}_{t=1}\tau^{(t)}_i(z)\tau^{(n-t)}_j(z)
     +\ldots+\nonumber\\
-        &&+\sum^m_{i_1,\ldots,i_n=1}
+        &+\sum^m_{i_1,\ldots,i_n=1}
         \frac{\partial^n}{\partial\tau_{i_1}\ldots\partial\tau_{i_n}}
         g\left(\tau(z),z\right) \tau^{'}_{i_1}(z)\ldots
-        \tau^{'}_{i_n}(z).\nonumber \end{align}
+        \tau^{'}_{i_n}(z).\nonumber 
+        \end{align}
 
         Переходя к пределу при $z\to z_{(0)}$, получаем \begin{align}
-        &&\frac{\partial^n}{\partial z^n} g(\tau(z),z)|_{z=z_{(0)}}= \nonumber \\
-            &&=n! J_{(0)}\tau_{(n)}+\frac{\partial^n}{\partial z^n}
+        &\frac{\partial^n}{\partial z^n} g(\tau(z),z)|_{z=z_{(0)}}= \nonumber \\
+            &=n! J_{(0)}\tau_{(n)}+\frac{\partial^n}{\partial z^n}
             g(\tau_{(0)},
                     z_{(0)})+\ldots+  \\
-                &&+\sum^m_{i_1,\ldots,i_n=1}
+                &+\sum^m_{i_1,\ldots,i_n=1}
                 \frac{\partial^n}{\partial\tau_{i_1}\ldots\partial\tau_{i_n}}
                 g(\tau_{(0)},z_{(0)})\tau_{i_1(1)}\ldots\tau_{i_n(1)} i_1!\ldots
-                i_n!, \nonumber \end{align} где правая часть зависит только от
+                i_n!, \nonumber
+                 \end{align} 
+                где правая часть зависит только от
                 $\tau_{(0)},\ldots,\tau_{(n)}$ и не зависит от
                 $\tau_{(n+1)},\ldots$. Следовательно,
                 $$
